@@ -36,7 +36,10 @@ function App() {
           selectedPlatform={selectedPlatform}
           onSelectedPlatform={(platform) => setSelectedPlatform(platform)}
         ></PlatformSelector>
-        <GameGrid selectedGenre={selectedGenre}></GameGrid>
+        <GameGrid
+          selectedPlatform={selectedPlatform}
+          selectedGenre={selectedGenre}
+        ></GameGrid>
       </GridItem>
     </Grid>
   );
