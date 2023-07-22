@@ -1,19 +1,42 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa6";
 
-export const SortSelector = () => {
+interface Props {
+  onSelectSortOrder: (sortOrder: string) => void;
+  sortOrder: string;
+}
+export const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
+  const sortOrders = [
+    { value: "", label: "Relevance" },
+    { value: "-added", label: "Date added" },
+    { value: "name", label: "Name" },
+    { value: "-released", label: "Release Date" },
+    { value: "-metacritic", label: "Popularity" },
+    { value: "-rating", label: "Average rating" },
+  ];
+  const currentSortOrder = sortOrders.find(
+    (order) => order.value === sortOrder
+  );
+
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<FaChevronDown />}>
-        Orderby: Relevance
+        Orderby: {currentSortOrder?.label || "Relevance"}
       </MenuButton>
+
       <MenuList>
-        <MenuItem>Relvance</MenuItem>
-        <MenuItem>Date added</MenuItem>
-        <MenuItem>Name</MenuItem>
-        <MenuItem>Release Date</MenuItem>
-        <MenuItem>Popularity</MenuItem>
-        <MenuItem>Average Rating</MenuItem>
+        {sortOrders.map((order) => {
+          return (
+            <MenuItem
+              onClick={() => {
+                onSelectSortOrder(order.value);
+              }}
+              key={order.label}
+            >
+              {order.label}
+            </MenuItem>
+          );
+        })}
       </MenuList>
     </Menu>
   );
