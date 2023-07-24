@@ -3,7 +3,6 @@ import { GameCard } from "../components/GameCard";
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import { GameCardSkeleton } from "./GameCardSkeleton";
 import { GameCardContainer } from "./GameCardContainer";
-import { Genre } from "../hooks/useGenres";
 import { GameQuery } from "../App";
 
 interface Props {
@@ -18,7 +17,7 @@ export const GameGrid = ({ gameQuery }: Props) => {
 
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        spacing={3}
+        spacing={6}
         padding="10px"
       >
         {isLoading &&
