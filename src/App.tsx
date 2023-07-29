@@ -9,6 +9,8 @@ import { Platform } from "./hooks/useGames";
 import { SortSelector } from "./components/SortSelector";
 import "./App.css";
 import { GameHeading } from "./components/GameHeading";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -17,51 +19,55 @@ export interface GameQuery {
   searchText: string;
 }
 function App() {
+  const queryClient = new QueryClient();
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
-    <Grid
-      templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
-      templateColumns={{ base: "1fr", lg: "220px 1fr" }}
-    >
-      <GridItem area="nav">
-        <NavBar
-          onSearch={(searchText) => {
-            setGameQuery({ ...gameQuery, searchText });
-          }}
-        ></NavBar>
-      </GridItem>
-      <Show above="lg">
-        <GridItem area="aside" paddingX={5}>
-          <GenreList
-            onSelectedGenre={(genre) => {
-              setGameQuery({ ...gameQuery, genre });
+    <QueryClientProvider client={queryClient}>
+      <Grid
+        templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
+        templateColumns={{ base: "1fr", lg: "220px 1fr" }}
+      >
+        <GridItem area="nav">
+          <NavBar
+            onSearch={(searchText) => {
+              setGameQuery({ ...gameQuery, searchText });
             }}
-            selectedGenre={gameQuery.genre}
-          ></GenreList>
+          ></NavBar>
         </GridItem>
-      </Show>
-      <GridItem area="main">
-        <Box paddingLeft={2}>
-          <GameHeading gameQuery={gameQuery}></GameHeading>
-          <HStack spacing={5} marginBottom={5}>
-            <PlatformSelector
-              selectedPlatform={gameQuery.platform}
-              onSelectedPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
-              }
-            ></PlatformSelector>
-            <SortSelector
-              sortOrder={gameQuery.sortOrder}
-              onSelectSortOrder={(sortOrder) => {
-                setGameQuery({ ...gameQuery, sortOrder });
+        <Show above="lg">
+          <GridItem area="aside" paddingX={5}>
+            <GenreList
+              onSelectedGenre={(genre) => {
+                setGameQuery({ ...gameQuery, genre });
               }}
-            ></SortSelector>
-          </HStack>
-        </Box>
-        <GameGrid gameQuery={gameQuery}></GameGrid>
-      </GridItem>
-    </Grid>
+              selectedGenre={gameQuery.genre}
+            ></GenreList>
+          </GridItem>
+        </Show>
+        <GridItem area="main">
+          <Box paddingLeft={2}>
+            <GameHeading gameQuery={gameQuery}></GameHeading>
+            <HStack spacing={5} marginBottom={5}>
+              <PlatformSelector
+                selectedPlatform={gameQuery.platform}
+                onSelectedPlatform={(platform) =>
+                  setGameQuery({ ...gameQuery, platform })
+                }
+              ></PlatformSelector>
+              <SortSelector
+                sortOrder={gameQuery.sortOrder}
+                onSelectSortOrder={(sortOrder) => {
+                  setGameQuery({ ...gameQuery, sortOrder });
+                }}
+              ></SortSelector>
+            </HStack>
+          </Box>
+          <GameGrid gameQuery={gameQuery}></GameGrid>
+        </GridItem>
+      </Grid>
+      <ReactQueryDevtools></ReactQueryDevtools>
+    </QueryClientProvider>
   );
 }
 
