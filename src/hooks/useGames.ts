@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import APICliet from "../services/api-client";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import APICliet, { FetchResponse } from "../services/api-client";
 import { GameQuery } from "../App";
 import { Platform } from "./usePlatforms";
 
@@ -15,17 +15,21 @@ export interface Game {
 const apiClient = new APICliet<Game>("/games");
 
 const useGames = (gameQuery: GameQuery) => {
-  return useQuery({
+  return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
-    queryFn: () =>
+    queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
           genres: gameQuery.genre?.id,
           parent_platforms: gameQuery.platform?.id,
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
+          page: pageParam,
         },
       }),
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.next ? allPages.length + 1 : undefined;
+    },
     staleTime: 5 * 1000,
   });
 };
