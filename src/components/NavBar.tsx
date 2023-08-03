@@ -3,14 +3,11 @@ import logo from "../assets/gamestop.webp";
 import { ColorModeSwitch } from "./ColorModeSwitch";
 import { SearchInput } from "./SearchInput";
 
-interface Props {
-  onSearch: (searchText: string) => void;
-}
-export const NavBar = ({ onSearch }: Props) => {
+export const NavBar = () => {
   return (
     <HStack padding="10px">
       <Image src={logo} boxSize="60px"></Image>
-      <SearchInput onSearch={onSearch}></SearchInput>
+      <SearchInput></SearchInput>
       <ColorModeSwitch></ColorModeSwitch>
     </HStack>
   );

@@ -1,11 +1,11 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa6";
+import useGameQueryStore from "../stores/GameQueryStore";
 
-interface Props {
-  onSelectSortOrder: (sortOrder: string) => void;
-  sortOrder: string;
-}
-export const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
+export const SortSelector = () => {
+  const sortOrder = useGameQueryStore((s) => s.gameQuery.sortOrder);
+  const setSortOrder = useGameQueryStore((s) => s.setSortOrder);
+
   const sortOrders = [
     { value: "", label: "Relevance" },
     { value: "-added", label: "Date added" },
@@ -29,7 +29,7 @@ export const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
           return (
             <MenuItem
               onClick={() => {
-                onSelectSortOrder(order.value);
+                setSortOrder(order.value);
               }}
               key={order.label}
             >
