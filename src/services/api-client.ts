@@ -14,7 +14,7 @@ const axiosInstance = axios.create({
   },
 });
 
-class APICliet<T> {
+class APIClient<T> {
   endpoint: string;
 
   constructor(endpoint: string) {
@@ -26,7 +26,13 @@ class APICliet<T> {
       .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) => res.data);
   };
+
+  get = (id: number | string) => {
+    return axiosInstance
+      .get<T>(this.endpoint + "/" + id)
+      .then((res) => res.data);
+  };
 }
 
 export { CanceledError };
-export default APICliet;
+export default APIClient;

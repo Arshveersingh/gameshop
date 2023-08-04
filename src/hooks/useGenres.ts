@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
 import genres from "../data/genres";
-import APICliet, { FetchResponse } from "../services/api-client";
+import APIClient, { FetchResponse } from "../services/api-client";
 export interface Genre {
   id: number;
   name: string;
@@ -9,7 +9,7 @@ export interface Genre {
   games_count: number;
   image_background: string;
 }
-const apiClient = new APICliet<Genre>("/genres");
+const apiClient = new APIClient<Genre>("/genres");
 
 const useGenres = () => {
   return useQuery<FetchResponse<Genre>, Error>({
