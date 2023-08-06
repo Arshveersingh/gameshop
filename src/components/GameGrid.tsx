@@ -1,4 +1,4 @@
-import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { Button, SimpleGrid, Text } from "@chakra-ui/react";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { GameCard } from "../components/GameCard";
@@ -26,7 +26,7 @@ export const GameGrid = () => {
       next={() => {
         fetchNextPage();
       }}
-      loader={<Spinner></Spinner>}
+      loader={<Button isLoading loadingText="Loading"></Button>}
     >
       <SimpleGrid
         padding="10px"
