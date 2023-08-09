@@ -5,6 +5,7 @@ import { GameAttributes } from "../components/GameAttributes";
 import GameScreenshots from "../components/GameScreenshots";
 import { GameTrailer } from "../components/GameTrailer";
 import useGame from "../hooks/useGame";
+import { BackgroundImage } from "../components/BackGroundImage/BackgroundImage";
 
 export const GameDetailPage = () => {
   const { slug } = useParams();
@@ -12,18 +13,21 @@ export const GameDetailPage = () => {
   if (isLoading) return <Spinner></Spinner>;
   if (error || !game) throw error;
   return (
-    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
-      <GridItem>
-        <Heading marginBottom={1}>{game?.name}</Heading>
-        <ExpandableText maxChars={300}>{game.description_raw}</ExpandableText>
-        <GameAttributes game={game}></GameAttributes>
-      </GridItem>
-      <GridItem>
-        <Box marginBottom={5}>
-          <GameTrailer gameId={game.id}></GameTrailer>
-        </Box>
-        <GameScreenshots gameId={game.id}></GameScreenshots>
-      </GridItem>
-    </SimpleGrid>
+    <>
+      <BackgroundImage imgUrl={game.background_image}></BackgroundImage>
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
+        <GridItem>
+          <Heading marginBottom={1}>{game?.name}</Heading>
+          <ExpandableText maxChars={300}>{game.description_raw}</ExpandableText>
+          <GameAttributes game={game}></GameAttributes>
+        </GridItem>
+        <GridItem>
+          <Box marginBottom={5}>
+            <GameTrailer gameId={game.id}></GameTrailer>
+          </Box>
+          <GameScreenshots gameId={game.id}></GameScreenshots>
+        </GridItem>
+      </SimpleGrid>
+    </>
   );
 };
