@@ -1,4 +1,4 @@
-.artWrapper{
+.artWrapper {
   position: absolute;
   top: 0;
   left: 0;
@@ -7,7 +7,7 @@
   height: 100%;
   height: 500px;
 }
-.art{
+.art {
   background: no-repeat top;
   background-size: cover;
   height: 500px;
@@ -17,11 +17,11 @@
 }
 @media (max-width: 768px) {
   .art {
-      background: no-repeat top;
-      background-size: cover;
-      height: 300px;
-      max-height: 100%;
-      z-index: 1;
-      background-color: transparent;
- }
+    background: no-repeat top;
+    background-size: cover;
+    height: 300px;
+    max-height: 100%;
+    z-index: 1;
+    background-color: transparent;
+  }
 }
