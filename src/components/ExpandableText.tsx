@@ -11,6 +11,8 @@ export const ExpandableText = ({ children, maxChars }: Props) => {
   if (!children) return null;
   if (isExpanded) {
     summary = children;
+  } else if (children.length <= maxChars) {
+    return <Text fontSize={"xl"}>{children}</Text>;
   } else {
     summary = children.substring(0, maxChars) + "...";
   }
