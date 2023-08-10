@@ -28,6 +28,14 @@ export const GameAttributes = ({ game }: Props) => {
           <Text key={publisher.id}>{publisher.name}</Text>
         ))}
       </DefinitionItem>
+      <DefinitionItem term="Age Rating">
+        <Text>{game.esrb_rating?.name || "Not Rated"}</Text>
+      </DefinitionItem>
+      <DefinitionItem term="Developers">
+        {game.developers.map((developer) => (
+          <Text key={developer.id}>{developer.name}</Text>
+        ))}
+      </DefinitionItem>
     </SimpleGrid>
   );
 };
