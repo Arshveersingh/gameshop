@@ -25,5 +25,9 @@ dist-ssr
 
 # Sensitive data
 *.env
+*.env.*
 
 .vercel
+
+# Sentry Auth Token
+.env.sentry-build-plugin
