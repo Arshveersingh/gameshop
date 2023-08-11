@@ -7,6 +7,7 @@ import { GameTrailer } from "../components/GameTrailer";
 import { BackgroundImage } from "../components/BackGroundImage/BackgroundImage";
 import { GameStores } from "../components/GameStore";
 import useGame from "../hooks/useGame";
+import { AchievementList } from "../components/AchievementList";
 
 export const GameDetailPage = () => {
   const { slug } = useParams();
@@ -30,6 +31,7 @@ export const GameDetailPage = () => {
           <GameScreenshots gameId={game.id}></GameScreenshots>
         </GridItem>
       </SimpleGrid>
+      <AchievementList game={game}></AchievementList>
     </>
   );
 };
