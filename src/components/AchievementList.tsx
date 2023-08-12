@@ -17,7 +17,13 @@ interface Props {
   game: Game;
 }
 export const AchievementList = ({ game }: Props) => {
-  const { data } = useAchievements(game.id);
+  const { data, error } = useAchievements(game.id);
+  if (error) {
+    throw error;
+  }
+  if (data?.count === 0) {
+    return;
+  }
   return (
     <>
       <Heading margin={5}>{game.name} Achivements</Heading>

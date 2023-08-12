@@ -8,6 +8,7 @@ import { BackgroundImage } from "../components/BackGroundImage/BackgroundImage";
 import { GameStores } from "../components/GameStore";
 import useGame from "../hooks/useGame";
 import { AchievementList } from "../components/AchievementList";
+import { RedditPosts } from "../components/RedditPosts";
 
 export const GameDetailPage = () => {
   const { slug } = useParams();
@@ -32,6 +33,7 @@ export const GameDetailPage = () => {
         </GridItem>
       </SimpleGrid>
       <AchievementList game={game}></AchievementList>
+      <RedditPosts gameId={game.id}></RedditPosts>
     </>
   );
 };
