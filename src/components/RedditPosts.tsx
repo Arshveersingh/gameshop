@@ -1,18 +1,13 @@
 import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
   GridItem,
   HStack,
   Heading,
   Image,
   SimpleGrid,
-  Stack,
   Text,
 } from "@chakra-ui/react";
-import useRedditPosts from "../hooks/useRedditPosts";
 import noImage from "../assets/no-image-placeholder.webp";
+import useRedditPosts from "../hooks/useRedditPosts";
 import { ExpandableText } from "./ExpandableText";
 
 interface Props {
