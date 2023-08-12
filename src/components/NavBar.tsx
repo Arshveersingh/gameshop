@@ -1,5 +1,5 @@
 import { HStack, Image } from "@chakra-ui/react";
-import logo from "../assets/gamestop.webp";
+import logo from "../assets/gameshop.webp";
 import { ColorModeSwitch } from "./ColorModeSwitch";
 import { SearchInput } from "./SearchInput";
 import { Link } from "react-router-dom";
