@@ -10,6 +10,7 @@ interface Game {
   slug: string;
   background_image: string;
   genres: Genre[];
+  released: string;
   publishers: Publisher[];
   developers: Developer[];
   parent_platforms: { platform: Platform }[];

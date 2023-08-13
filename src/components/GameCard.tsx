@@ -9,6 +9,10 @@ import { Link } from "react-router-dom";
 interface Props {
   game: Game;
 }
+// Returns true if the game is released
+const checkReleaseDate = (releaseDate: string) => {
+  return releaseDate <= new Date().toISOString().split("T")[0];
+};
 
 export const GameCard = ({ game }: Props) => {
   return (
@@ -22,9 +26,11 @@ export const GameCard = ({ game }: Props) => {
           <CriticScore score={game.metacritic}></CriticScore>
         </HStack>
         <Heading fontSize={"2xl"}>
-          <Link to={`/games/${game.slug}`}>{game.name}</Link>{" "}
+          <Link to={`/games/${game.slug}`}>{game.name}</Link>
         </Heading>
-        <Emoji rating={game.rating_top}></Emoji>
+        <Emoji
+          rating={checkReleaseDate(game.released) ? game.rating_top : -1}
+        ></Emoji>
       </CardBody>
     </Card>
   );
