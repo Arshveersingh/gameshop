@@ -38,7 +38,7 @@ export const RedditPosts = ({ gameId }: Props) => {
                 {post.name}
               </Text>
             </HStack>
-            <Text pt={2} fontSize={"16px"} color={"gray.400"}>
+            <Text as={"div"} pt={2} fontSize={"16px"} color={"gray.400"}>
               <ExpandableText maxChars={100}>
                 {post.text.replace(/<[^>]*>/g, "")}
               </ExpandableText>
