@@ -11,7 +11,7 @@ interface Props {
 }
 // Returns true if the game is released
 const checkReleaseDate = (releaseDate: string) => {
-  return releaseDate <= new Date().toISOString().split("T")[0];
+  return releaseDate <= new Date().toISOString().split("T")[0]; // format YYYY-MM-DD
 };
 
 export const GameCard = ({ game }: Props) => {

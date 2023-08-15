@@ -7,7 +7,7 @@ import useGameQueryStore from "../stores/GameQueryStore";
 
 export const NavBar = () => {
   const navigate = useNavigate();
-  const { setGenreId, setPlatformId, setSearchText, setSortOrder } =
+  const { setGenreId, setPlatformId, setSearchText, setSortOrder, setDates } =
     useGameQueryStore();
   const handleClick = () => {
     setGenreId(0);
@@ -15,6 +15,7 @@ export const NavBar = () => {
     setSearchText("");
     setSortOrder("");
     navigate("/");
+    setDates("");
   };
 
   return (
