@@ -4,6 +4,7 @@ import { GameHeading } from "../components/GameHeading";
 import { GenreList } from "../components/GenreList";
 import { PlatformSelector } from "../components/PlatformSelector";
 import { SortSelector } from "../components/SortSelector";
+import { DateSelector } from "../components/DateSelector";
 
 export const HomePage = () => {
   return (
@@ -22,6 +23,7 @@ export const HomePage = () => {
           <HStack spacing={5} marginBottom={5}>
             <PlatformSelector></PlatformSelector>
             <SortSelector></SortSelector>
+            <DateSelector></DateSelector>
           </HStack>
         </Box>
         <GameGrid></GameGrid>
