@@ -14,6 +14,7 @@ export const SearchInput = () => {
       onSubmit={(event) => {
         event.preventDefault();
         setSearchText(ref.current?.value || "");
+        ref.current!.value = "";
         navigate("/");
       }}
     >
