@@ -14,6 +14,10 @@ interface Game {
   publishers: Publisher[];
   developers: Developer[];
   parent_platforms: { platform: Platform }[];
+  platforms: {
+    platform: Platform;
+    requirements: { minimum?: string; recommended?: string };
+  }[];
   metacritic: number;
   rating_top: number;
   esrb_rating: ESRB;

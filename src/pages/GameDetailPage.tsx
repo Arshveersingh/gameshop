@@ -9,6 +9,7 @@ import { GameStores } from "../components/GameStore";
 import useGame from "../hooks/useGame";
 import { AchievementList } from "../components/AchievementList";
 import { RedditPosts } from "../components/RedditPosts";
+import { GameRequirements } from "../components/GameRequirements";
 
 export const GameDetailPage = () => {
   const { slug } = useParams();
@@ -32,6 +33,7 @@ export const GameDetailPage = () => {
           <GameScreenshots gameId={game.id}></GameScreenshots>
         </GridItem>
       </SimpleGrid>
+      <GameRequirements game={game}></GameRequirements>
       <AchievementList game={game}></AchievementList>
       <RedditPosts gameId={game.id}></RedditPosts>
     </>
