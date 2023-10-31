@@ -9,20 +9,33 @@ import {
   SimpleGrid,
   Stack,
   Text,
+  useColorMode,
 } from "@chakra-ui/react";
+
 import Game from "../entities/Game";
 import useAchievements from "../hooks/useAchievements";
 
 interface Props {
   game: Game;
 }
+
 export const AchievementList = ({ game }: Props) => {
   const { data, error } = useAchievements(game.id);
+  const { toggleColorMode, colorMode } = useColorMode();
+  var backgroundColor = "";
+  var color = "";
   if (error) {
     throw error;
   }
   if (data?.count === 0) {
     return;
+  }
+  if (colorMode === "light") {
+    backgroundColor = "white.900";
+    color = "black.900";
+  } else {
+    backgroundColor = "gray.900";
+    color;
   }
   return (
     <>
@@ -31,7 +44,7 @@ export const AchievementList = ({ game }: Props) => {
         {data?.results.map((achievement) => (
           <GridItem key={achievement.id}>
             <Card
-              backgroundColor={"gray.900"}
+              backgroundColor={backgroundColor}
               direction={{ base: "column", sm: "row" }}
             >
               <Stack>
@@ -54,7 +67,7 @@ export const AchievementList = ({ game }: Props) => {
                   </Stack>
                 </HStack>
                 <CardBody padding={2}>
-                  <Text pt={2} fontSize={"16px"} color={"gray.400"}>
+                  <Text pt={2} fontSize={"16px"} color={color}>
                     {achievement.description}
                   </Text>
                 </CardBody>
