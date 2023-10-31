@@ -17,7 +17,9 @@ const checkReleaseDate = (releaseDate: string) => {
 export const GameCard = ({ game }: Props) => {
   return (
     <Card>
-      <Image src={getCroppedImages(game.background_image)}></Image>
+      <Link to={`/games/${game.slug}`}>
+        <Image src={getCroppedImages(game.background_image)}></Image>
+      </Link>
       <CardBody>
         <HStack justifyContent={"space-between"} marginBottom={3}>
           <PlatfromIconList
