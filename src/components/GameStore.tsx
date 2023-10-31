@@ -5,6 +5,7 @@ import {
   Link,
   SimpleGrid,
   Text,
+  useColorMode,
 } from "@chakra-ui/react";
 import { IconType } from "react-icons";
 import {
@@ -37,17 +38,20 @@ const iconMap: { [storeId: number]: { icon: IconType; storeName: string } } = {
 
 export const GameStores = ({ gameId: id }: Props) => {
   const { data, error } = useStore(id);
+  const { toggleColorMode, colorMode } = useColorMode();
+  var color = "";
   if (error) return;
+  color = colorMode === "dark" ? "gray.400" : "black.900";
   return (
     <>
-      <Text marginLeft={3} fontSize={"18px"} color={"gray.400"}>
+      <Text marginLeft={3} fontSize={"18px"} color={color}>
         Where to buy
       </Text>
       <SimpleGrid spacing={2} columns={{ base: 1, sm: 2, xl: 3 }}>
         {data?.results.map((store) => (
           <GridItem key={store.id} margin={3}>
             <Link isExternal href={store.url}>
-              <Button color={"gray.400"}>
+              <Button color={color}>
                 {iconMap[store.store_id].storeName}
                 <Icon
                   marginLeft={2}
