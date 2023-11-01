@@ -7,8 +7,7 @@ interface Props {
 }
 export const DefinitionItem = ({ term, children }: Props) => {
   const { toggleColorMode, colorMode } = useColorMode();
-  var color = "";
-  color = colorMode === "dark" ? "gray.600" : "black.900";
+  var color = colorMode === "dark" ? "gray.600" : "black.900";
   return (
     <Box marginY={5}>
       <Heading marginBottom={2} as="dt" fontSize="lg" color={color} padding={0}>

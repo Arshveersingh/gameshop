@@ -39,9 +39,8 @@ const iconMap: { [storeId: number]: { icon: IconType; storeName: string } } = {
 export const GameStores = ({ gameId: id }: Props) => {
   const { data, error } = useStore(id);
   const { toggleColorMode, colorMode } = useColorMode();
-  var color = "";
   if (error) return;
-  color = colorMode === "dark" ? "gray.400" : "black.900";
+  var color = colorMode === "dark" ? "gray.400" : "black.900";
   return (
     <>
       <Text marginLeft={3} fontSize={"18px"} color={color}>

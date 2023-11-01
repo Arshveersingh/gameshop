@@ -5,6 +5,7 @@ import {
   Image,
   SimpleGrid,
   Text,
+  useColorMode,
 } from "@chakra-ui/react";
 import noImage from "../assets/no-image-placeholder.webp";
 import useRedditPosts from "../hooks/useRedditPosts";
@@ -15,12 +16,14 @@ interface Props {
 }
 export const RedditPosts = ({ gameId }: Props) => {
   const { data, error } = useRedditPosts(gameId);
+  const { toggleColorMode, colorMode } = useColorMode();
   if (error) {
     throw error;
   }
   if (data?.count === 0) {
     return;
   }
+  var color = colorMode === "dark" ? "gray.400" : "black.900";
   return (
     <>
       <Heading margin={5}>Reddit Posts</Heading>
@@ -38,7 +41,7 @@ export const RedditPosts = ({ gameId }: Props) => {
                 {post.name}
               </Text>
             </HStack>
-            <Text as={"div"} pt={2} fontSize={"16px"} color={"gray.400"}>
+            <Text as={"div"} pt={2} fontSize={"16px"} color={color}>
               <ExpandableText maxChars={100}>
                 {post.text.replace(/<[^>]*>/g, "")}
               </ExpandableText>

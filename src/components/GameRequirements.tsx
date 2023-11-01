@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, useColorMode } from "@chakra-ui/react";
 import Game from "../entities/Game";
 
 interface Props {
@@ -6,9 +6,12 @@ interface Props {
 }
 
 export const GameRequirements = ({ game }: Props) => {
+  const { toggleColorMode, colorMode } = useColorMode();
   const platforms = game.platforms.filter(
     (obj) => Object.keys(obj.requirements).length !== 0
   );
+
+  var color = colorMode === "dark" ? "gray.400" : "black.900";
 
   return (
     <Box padding={4}>
@@ -30,13 +33,13 @@ export const GameRequirements = ({ game }: Props) => {
               {platform.name}
             </Text>
             {minimumReq && (
-              <Text fontSize={"md"} color={"gray.400"}>
+              <Text fontSize={"md"} color={color}>
                 Minimum:
               </Text>
             )}
             <Text paddingLeft={4}>{minimumReq}</Text>
             {recommendedReq && (
-              <Text fontSize={"md"} color={"gray.400"}>
+              <Text fontSize={"md"} color={color}>
                 Recommended:
               </Text>
             )}
