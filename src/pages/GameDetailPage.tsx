@@ -21,8 +21,18 @@ export const GameDetailPage = () => {
       <BackgroundImage imgUrl={game.background_image}></BackgroundImage>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
         <GridItem>
-          <Heading marginBottom={1}>{game?.name}</Heading>
-          <ExpandableText maxChars={300}>{game.description_raw}</ExpandableText>
+          <Heading
+            fontFamily="'Bebas Neue', 'Roboto', 'Sans-Serif';"
+            marginBottom={1}
+          >
+            {game?.name}
+          </Heading>
+          <ExpandableText
+            fontFamily="'Ubuntu Mono', 'Courier New', 'Monospace';"
+            maxChars={300}
+          >
+            {game.description_raw}
+          </ExpandableText>
           <GameAttributes game={game}></GameAttributes>
           <GameStores gameId={game.id}></GameStores>
         </GridItem>

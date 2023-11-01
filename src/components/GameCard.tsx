@@ -27,7 +27,10 @@ export const GameCard = ({ game }: Props) => {
           ></PlatfromIconList>
           <CriticScore score={game.metacritic}></CriticScore>
         </HStack>
-        <Heading fontSize={"2xl"}>
+        <Heading
+          fontSize={"2xl"}
+          fontFamily="'Bebas Neue', 'Roboto', 'Sans-Serif';"
+        >
           <Link to={`/games/${game.slug}`}>{game.name}</Link>
         </Heading>
         <Emoji

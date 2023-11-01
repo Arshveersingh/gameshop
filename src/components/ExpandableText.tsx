@@ -3,8 +3,13 @@ import { useState } from "react";
 interface Props {
   children: string;
   maxChars: number;
+  fontFamily?: string;
 }
-export const ExpandableText = ({ children, maxChars }: Props) => {
+export const ExpandableText = ({
+  children,
+  maxChars,
+  fontFamily = "",
+}: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
   let summary = "";
 
@@ -12,13 +17,17 @@ export const ExpandableText = ({ children, maxChars }: Props) => {
   if (isExpanded) {
     summary = children;
   } else if (children.length <= maxChars) {
-    return <Text fontSize={"xl"}>{children}</Text>;
+    return (
+      <Text fontFamily={fontFamily} fontSize={"lg"}>
+        {children}
+      </Text>
+    );
   } else {
     summary = children.substring(0, maxChars) + "...";
   }
   return (
     <>
-      <Text fontSize="xl">
+      <Text fontSize="lg" fontFamily={fontFamily} lineHeight={1.3}>
         {summary}
         <Button
           colorScheme="yellow"
@@ -30,7 +39,7 @@ export const ExpandableText = ({ children, maxChars }: Props) => {
             setIsExpanded(!isExpanded);
           }}
         >
-          {isExpanded ? "Show Less" : "Show More"}
+          {isExpanded ? "Read Less" : "Read More"}
         </Button>
       </Text>
     </>
