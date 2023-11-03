@@ -1,4 +1,11 @@
-import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  HStack,
+  Heading,
+  Image,
+  useColorMode,
+} from "@chakra-ui/react";
 import Game from "../entities/Game";
 import { PlatfromIconList } from "./PlatfromIconList";
 import { CriticScore } from "./CriticScore";
@@ -15,8 +22,10 @@ const checkReleaseDate = (releaseDate: string) => {
 };
 
 export const GameCard = ({ game }: Props) => {
+  const { toggleColorMode, colorMode } = useColorMode();
+  const background = colorMode === "dark" ? "gray.700" : "whitesmoke";
   return (
-    <Card>
+    <Card background={background}>
       <Link to={`/games/${game.slug}`}>
         <Image src={getCroppedImages(game.background_image)}></Image>
       </Link>
