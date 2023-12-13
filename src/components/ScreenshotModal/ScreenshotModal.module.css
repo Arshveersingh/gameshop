@@ -1,0 +1,40 @@
+.modalOverlay {
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modalBody {
+  position: relative;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.screenshotImage {
+  height: 80vh;
+  margin: 0 auto;
+}
+.modalCloseBtn {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+}
+
+.btnGroup {
+  display: flex;
+  margin: 0 auto;
+
+  z-index: 1000;
+}
+.btnGroup > * {
+  cursor: pointer;
+  margin: auto 4rem;
+}
