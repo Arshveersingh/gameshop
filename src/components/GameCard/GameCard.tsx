@@ -6,12 +6,13 @@ import {
   Image,
   useColorMode,
 } from "@chakra-ui/react";
-import Game from "../entities/Game";
-import { PlatfromIconList } from "./PlatfromIconList";
-import { CriticScore } from "./CriticScore";
-import getCroppedImages from "../services/image-url";
-import { Emoji } from "./Emoji";
+import Game from "../../entities/Game";
+import { PlatfromIconList } from "../PlatfromIconList";
+import { CriticScore } from "../CriticScore";
+import getCroppedImages from "../../services/image-url";
+import { Emoji } from "../Emoji";
 import { Link } from "react-router-dom";
+import styles from "./GameCard.module.css";
 
 interface Props {
   game: Game;
@@ -27,7 +28,11 @@ export const GameCard = ({ game }: Props) => {
   return (
     <Card background={background}>
       <Link to={`/games/${game.slug}`}>
-        <Image src={getCroppedImages(game.background_image)}></Image>
+        <Image
+          width={"100%"}
+          className={styles.gameCardImage}
+          src={getCroppedImages(game.background_image)}
+        ></Image>
       </Link>
       <CardBody>
         <HStack justifyContent={"space-between"} marginBottom={3}>

@@ -1,4 +1,4 @@
-import { Box, Image, useColorMode } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import {
   IoIosArrowDropleftCircle,
@@ -19,7 +19,6 @@ export const ScreenshotModal = ({
   onClose,
 }: Props) => {
   const [index, setIndex] = useState(clickedIndex);
-  const { toggleColorMode, colorMode } = useColorMode();
   useEffect(() => {
     document.body.style.overflow = "hidden";
 

@@ -1,4 +1,4 @@
-import { HStack, Image } from "@chakra-ui/react";
+import { HStack, Image, Show } from "@chakra-ui/react";
 import logo from "../assets/gameshop.webp";
 import { ColorModeSwitch } from "./ColorModeSwitch";
 import { SearchInput } from "./SearchInput";
@@ -19,12 +19,14 @@ export const NavBar = () => {
   };
 
   return (
-    <HStack padding="10px">
+    <HStack padding="10px" width={"100%"}>
       <Link to="/" onClick={handleClick}>
         <Image objectFit="cover" src={logo} boxSize="60px"></Image>
       </Link>
       <SearchInput></SearchInput>
-      <ColorModeSwitch></ColorModeSwitch>
+      <Show above="md">
+        <ColorModeSwitch></ColorModeSwitch>
+      </Show>
     </HStack>
   );
 };
