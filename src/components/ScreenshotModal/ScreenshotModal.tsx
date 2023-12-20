@@ -26,6 +26,29 @@ export const ScreenshotModal = ({
       document.body.style.overflow = "auto";
     };
   }, []);
+  useEffect(() => {
+    const handleArrowKeys = (event: KeyboardEvent) => {
+      if (event.code == "ArrowRight") {
+        if (screenshots && index < screenshots.length - 1) {
+          setIndex(index + 1);
+        }
+      }
+      if (event.code == "ArrowLeft") {
+        if (screenshots && screenshots.length > 1 && index > 0) {
+          setIndex(index - 1);
+        }
+      }
+      if (event.code == "Escape") {
+        onClose();
+      }
+    };
+    document.addEventListener("keydown", handleArrowKeys);
+
+    return () => {
+      document.removeEventListener("keydown", handleArrowKeys);
+    };
+  }, [index, screenshots]);
+
   if (screenshots == undefined) return;
 
   return (
@@ -52,8 +75,6 @@ export const ScreenshotModal = ({
               onClick={() => {
                 if (screenshots.length > 1 && index > 0) {
                   setIndex(index - 1);
-                } else {
-                  return;
                 }
               }}
             ></IoIosArrowDropleftCircle>
@@ -63,7 +84,6 @@ export const ScreenshotModal = ({
               onClick={() => {
                 if (index < screenshots.length - 1) {
                   setIndex(index + 1);
-                } else {
                 }
               }}
             ></IoIosArrowDroprightCircle>

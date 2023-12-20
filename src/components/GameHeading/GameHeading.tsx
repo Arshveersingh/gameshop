@@ -18,7 +18,6 @@ export const GameHeading = () => {
       as="h1"
       marginY={4}
       marginTop={0}
-      // fontSize={"5xl"}
       fontSize={{ base: "2.3rem", md: "2.5rem", lg: "3rem" }}
     >
       {heading}
