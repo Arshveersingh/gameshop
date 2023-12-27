@@ -30,11 +30,11 @@ export const ExpandableText = ({
       <Text fontSize="lg" fontFamily={fontFamily} lineHeight={1.3}>
         {summary}
         <Button
-          colorScheme="yellow"
-          size="sm"
-          padding={3}
+          color={"white"}
+          variant={"link"}
+          size="lg"
           fontWeight="bold"
-          marginLeft={2}
+          marginLeft={1}
           onClick={() => {
             setIsExpanded(!isExpanded);
           }}
