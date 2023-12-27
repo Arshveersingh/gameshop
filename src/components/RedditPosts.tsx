@@ -14,6 +14,10 @@ import { ExpandableText } from "./ExpandableText";
 interface Props {
   gameId: number;
 }
+const removeHtmlEntities = (str: string) => {
+  var doc = new DOMParser().parseFromString(str, "text/html");
+  return doc.body.textContent || "";
+};
 export const RedditPosts = ({ gameId }: Props) => {
   const { data, error } = useRedditPosts(gameId);
   const { toggleColorMode, colorMode } = useColorMode();
@@ -43,7 +47,7 @@ export const RedditPosts = ({ gameId }: Props) => {
             </HStack>
             <Text as={"div"} pt={2} fontSize={"16px"} color={color}>
               <ExpandableText maxChars={100}>
-                {post.text.replace(/<[^>]*>/g, "")}
+                {removeHtmlEntities(post.text)}
               </ExpandableText>
             </Text>
             <Text fontWeight={"bold"} padding={2} fontStyle={"italic"}>
