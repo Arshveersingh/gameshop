@@ -28,20 +28,24 @@ export const ScreenshotModal = ({
   }, []);
   useEffect(() => {
     const handleArrowKeys = (event: KeyboardEvent) => {
-      if (event.code == "ArrowRight") {
+      if (event.code === "ArrowRight") {
         if (screenshots && index < screenshots.length - 1) {
           setIndex(index + 1);
         }
       }
-      if (event.code == "ArrowLeft") {
+      if (event.code === "ArrowLeft") {
         if (screenshots && screenshots.length > 1 && index > 0) {
           setIndex(index - 1);
         }
       }
-      if (event.code == "Escape") {
+      if (event.code === "Escape") {
+        onClose();
+      }
+      if (event.ctrlKey && event.code == "KeyK") {
         onClose();
       }
     };
+
     document.addEventListener("keydown", handleArrowKeys);
 
     return () => {

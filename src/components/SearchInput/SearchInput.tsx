@@ -18,10 +18,9 @@ export const SearchInput = () => {
   useEffect(() => {
     const searchBarHotKeyHandler = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.code == "KeyK") {
-        console.log("Ctrl+K");
         event.preventDefault();
-        ref.current!.focus();
         window.scrollTo({ top: 0, behavior: "smooth" });
+        ref.current!.focus();
       }
     };
     document.addEventListener("keydown", searchBarHotKeyHandler);
