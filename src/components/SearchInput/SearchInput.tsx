@@ -19,8 +19,8 @@ export const SearchInput = () => {
     const searchBarHotKeyHandler = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.code == "KeyK") {
         event.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
         ref.current!.focus();
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     };
     document.addEventListener("keydown", searchBarHotKeyHandler);

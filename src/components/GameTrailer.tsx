@@ -1,3 +1,4 @@
+import { SwiperSlide } from "swiper/react";
 import useTrailers from "../hooks/useTrailers";
 
 interface Props {
@@ -8,13 +9,14 @@ export const GameTrailer = ({ gameId }: Props) => {
   if (isLoading) return null;
   if (error) throw error;
   const first = data?.results[0];
-
   return first ? (
-    <video
-      src={first.data[480]}
-      controls
-      width="80%"
-      poster={first.preview}
-    ></video>
+    <SwiperSlide>
+      <video
+        src={first.data[480]}
+        controls
+        width="80%"
+        poster={first.preview}
+      ></video>
+    </SwiperSlide>
   ) : null;
 };

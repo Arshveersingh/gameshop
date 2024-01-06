@@ -1,0 +1,11 @@
+.slide {
+  border-radius: 15px;
+  width: 80vw;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+.thumbnails {
+  width: 80vw;
+  padding: 0.8
+  rem 0.5rem;
+}
