@@ -14,6 +14,8 @@ export const NavBar = () => {
     setPlatformId(0);
     setSearchText("");
     setSortOrder("");
+
+    
     navigate("/");
     setDates("");
   };

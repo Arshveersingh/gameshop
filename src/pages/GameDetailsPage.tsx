@@ -5,6 +5,7 @@ import { BackgroundImage } from "../components/BackGroundImage/BackgroundImage";
 import { ExpandableText } from "../components/ExpandableText";
 import { GameAttributes } from "../components/GameAttributes";
 import GameCarousel from "../components/GameCarousel/GameCarousel";
+import { GameRating } from "../components/GameRating";
 import { GameRequirements } from "../components/GameRequirements";
 import { GameStores } from "../components/GameStore";
 import { RedditPosts } from "../components/RedditPosts";
@@ -25,6 +26,7 @@ export const GameDetailPage = () => {
       >
         {game?.name}
       </Heading>
+      <GameRating rating={game.rating}></GameRating>
 
       <GameCarousel gameId={game.id}></GameCarousel>
       <ExpandableText

@@ -48,7 +48,7 @@ export const GameCard = ({ game }: Props) => {
           <Link to={`/games/${game.slug}`}>{game.name}</Link>
         </Heading>
         <Emoji
-          rating={checkReleaseDate(game.released) ? game.rating_top : -1}
+          rating={checkReleaseDate(game.released) ? game.rating : -1}
         ></Emoji>
       </CardBody>
     </Card>

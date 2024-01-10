@@ -1,16 +1,17 @@
 import { Image } from "@chakra-ui/react";
 import { useState } from "react";
-import { FreeMode, Navigation, Thumbs, Keyboard } from "swiper/modules";
+import { FreeMode, Keyboard, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useScreenshots from "../../hooks/useScreenshots";
 import styles from "./GameCarousel.module.css";
 
 import "swiper/css";
 import "swiper/css/free-mode";
+import "swiper/css/keyboard";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import "swiper/css/keyboard";
 import useTrailers from "../../hooks/useTrailers";
+
 interface Props {
   gameId: number;
 }
@@ -63,6 +64,17 @@ export const GameCarousel = ({ gameId }: Props) => {
         space
         navigation={true}
       >
+        {trailers?.results.map((trailer) => (
+          <SwiperSlide key={trailer.id}>
+            <video
+              className={styles.slide}
+              src={trailer.data[480]}
+              controls
+              width="80%"
+              poster={trailer.preview}
+            ></video>
+          </SwiperSlide>
+        ))}
         {screenshots?.results.map((screenshot) => (
           <SwiperSlide key={screenshot.id}>
             <Image src={screenshot.image}></Image>

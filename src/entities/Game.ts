@@ -19,7 +19,7 @@ interface Game {
     requirements: { minimum?: string; recommended?: string };
   }[];
   metacritic: number;
-  rating_top: number;
+  rating: number;
   esrb_rating: ESRB;
   description_raw: string;
 }
