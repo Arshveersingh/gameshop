@@ -6,6 +6,18 @@
 }
 .thumbnails {
   width: 80vw;
-  padding: 0.8
-  rem 0.5rem;
+  padding: 0.8 rem 0.5rem;
+}
+.videoThumbnail {
+  position: relative;
+}
+.videoPlay {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.65;
+}
+.videoThumbnail:hover > * {
+  opacity: 1;
 }

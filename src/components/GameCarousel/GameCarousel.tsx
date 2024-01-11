@@ -4,6 +4,7 @@ import { FreeMode, Keyboard, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useScreenshots from "../../hooks/useScreenshots";
 import styles from "./GameCarousel.module.css";
+import { FaRegCirclePlay } from "react-icons/fa6";
 
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -65,14 +66,12 @@ export const GameCarousel = ({ gameId }: Props) => {
         navigation={true}
       >
         {trailers?.results.map((trailer) => (
-          <SwiperSlide key={trailer.id}>
-            <video
-              className={styles.slide}
-              src={trailer.data[480]}
-              controls
-              width="80%"
-              poster={trailer.preview}
-            ></video>
+          <SwiperSlide className={styles.videoThumbnail} key={trailer.id}>
+            <Image className={styles.slide} src={trailer.preview}></Image>
+            <FaRegCirclePlay
+              size={40}
+              className={styles.videoPlay}
+            ></FaRegCirclePlay>
           </SwiperSlide>
         ))}
         {screenshots?.results.map((screenshot) => (
