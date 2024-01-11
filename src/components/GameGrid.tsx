@@ -14,7 +14,7 @@ export const GameGrid = () => {
     fetchNextPage,
     hasNextPage,
   } = useGames();
-  const { toggleColorMode, colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const color = colorMode === "dark" ? "gray.400" : "black.900";
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const fetchedGamesCount =
@@ -55,7 +55,7 @@ export const GameGrid = () => {
           <React.Fragment key={index}>
             {page.results.map((game) => (
               <GameCardContainer key={game.id}>
-                <GameCard  game={game}></GameCard>
+                <GameCard game={game}></GameCard>
               </GameCardContainer>
             ))}
           </React.Fragment>

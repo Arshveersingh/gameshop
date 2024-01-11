@@ -23,7 +23,7 @@ const checkReleaseDate = (releaseDate: string) => {
 };
 
 export const GameCard = ({ game }: Props) => {
-  const { toggleColorMode, colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const background = colorMode === "dark" ? "gray.700" : "whitesmoke";
   return (
     <Card background={background}>

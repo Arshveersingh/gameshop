@@ -20,7 +20,7 @@ const removeHtmlEntities = (str: string) => {
 };
 export const RedditPosts = ({ gameId }: Props) => {
   const { data, error } = useRedditPosts(gameId);
-  const { toggleColorMode, colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   if (error) {
     throw error;
   }

@@ -6,7 +6,7 @@ interface Props {
   children: ReactNode | ReactNode[];
 }
 export const DefinitionItem = ({ term, children }: Props) => {
-  const { toggleColorMode, colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   var color = colorMode === "dark" ? "gray.600" : "black.900";
   return (
     <Box marginY={5}>

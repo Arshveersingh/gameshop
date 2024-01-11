@@ -16,7 +16,7 @@ export const GenreList = () => {
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
   const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
   const { data: genres, error, isLoading } = useGenres();
-  const { toggleColorMode, colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   if (error) return null;
   if (isLoading)

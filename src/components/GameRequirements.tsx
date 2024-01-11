@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const GameRequirements = ({ game }: Props) => {
-  const { toggleColorMode, colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const platforms = game.platforms.filter(
     (obj) => Object.keys(obj.requirements).length !== 0
   );
