@@ -1,12 +1,29 @@
 .slide {
   border-radius: 15px;
-  width: 80vw;
+  width: 60vw;
   margin: 0 auto;
   margin-bottom: 1rem;
 }
-.thumbnails {
-  width: 80vw;
+.activeSlide {
+  opacity: 1;
+  border: 12px whitesmoke solid;
+  border-radius: 9px;
+}
+.thumbnail {
+  border: 2px solid transparent;
+  opacity: 0.5;
+  border-radius: 9px;
+  transition: opacity ease-in 0.2s;
+  transition: border ease-in 0.4s;
+}
+.thumbnail:hover {
+  border: 2px whitesmoke solid;
+  opacity: 1;
+}
+.thumbnailsContainer {
+  min-width: 50vw;
   padding: 0.8 rem 0.5rem;
+  background-color: rgb(18, 18, 18);
 }
 .videoThumbnail {
   position: relative;
@@ -17,7 +34,4 @@
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0.65;
-}
-.videoThumbnail:hover > * {
-  opacity: 1;
 }

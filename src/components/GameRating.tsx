@@ -29,9 +29,16 @@ export const GameRating = ({ rating }: Props) => {
           }
         })}
 
-      <Button ml={5} background={"black"} fontSize="2xl" size="sm">
+      <Box
+        paddingX={2}
+        borderRadius={"9px"}
+        ml={3}
+        background={"black"}
+        fontSize="2xl"
+      
+      >
         {rating}
-      </Button>
+      </Box>
     </Box>
   );
 };
