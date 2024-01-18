@@ -3,6 +3,7 @@ import { ErrorPage } from "../pages/ErrorPage";
 import { GameDetailPage } from "../pages/GameDetailsPage";
 import { HomePage } from "../pages/HomePage/HomePage";
 import { Layout } from "../pages/Layout";
+import { GameAchievementPage } from "../pages/GameAchievementPage";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage></HomePage> },
       { path: "/games", element: <HomePage></HomePage> },
       { path: "/games/:slug", element: <GameDetailPage></GameDetailPage> },
+      {
+        path: "/games/:slug/achievements",
+        element: <GameAchievementPage></GameAchievementPage>,
+      },
     ],
   },
 ]);

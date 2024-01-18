@@ -1,4 +1,4 @@
-import { Button, SimpleGrid, Text, useColorMode } from "@chakra-ui/react";
+import { Button, SimpleGrid, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { GameCard } from "./GameCard/GameCard";
@@ -14,8 +14,7 @@ export const GameGrid = () => {
     fetchNextPage,
     hasNextPage,
   } = useGames();
-  const { colorMode } = useColorMode();
-  const color = colorMode === "dark" ? "gray.400" : "black.900";
+  const color = useColorModeValue("black.900", "gray.400");
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const fetchedGamesCount =
     games?.pages.reduce((total, page) => total + page.results.length, 0) || 0;

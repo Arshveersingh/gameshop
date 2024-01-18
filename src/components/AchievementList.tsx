@@ -21,22 +21,16 @@ interface Props {
 
 export const AchievementList = ({ game }: Props) => {
   const { data, error } = useAchievements(game.id);
-  const { colorMode } = useColorMode();
-  var backgroundColor = "";
-  var color = "";
+  const color = useColorModeValue("black.900", "black.400");
+  const backgroundColor = useColorModeValue("white.900", "gray.900");
+
   if (error) {
     throw error;
   }
   if (data?.count === 0) {
     return;
   }
-  if (colorMode === "light") {
-    backgroundColor = "white.900";
-    color = "black.900";
-  } else {
-    backgroundColor = "gray.900";
-    color;
-  }
+
   return (
     <>
       <Heading margin={5}>{game.name} Achivements</Heading>
