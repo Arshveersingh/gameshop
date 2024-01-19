@@ -1,6 +1,6 @@
-import { Button, Heading, Spinner } from "@chakra-ui/react";
+import { Box, Button, Heading, Spinner } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AchievementList } from "../components/AchievementList";
+// import { AchievementList } from "../components/AchievementList";
 import { BackgroundImage } from "../components/BackGroundImage/BackgroundImage";
 import { ExpandableText } from "../components/ExpandableText";
 import { GameAttributes } from "../components/GameAttributes";
@@ -20,14 +20,17 @@ export const GameDetailPage = () => {
   return (
     <>
       <BackgroundImage imgUrl={game.background_image}></BackgroundImage>
-      <Heading
-        size={"3xl"}
-        fontFamily="'Bebas Neue', 'Roboto', 'Sans-Serif';"
-        marginBottom={1}
-      >
-        {game?.name}
-      </Heading>
-      <GameRating rating={game.rating}></GameRating>
+      <Box>
+        <Heading
+          textAlign={"center"}
+          size={"xl"}
+          fontFamily="'Bebas Neue', 'Roboto', 'Sans-Serif';"
+          marginBottom={0}
+        >
+          {game?.name}
+        </Heading>
+        <GameRating rating={game.rating}></GameRating>
+      </Box>
 
       <GameCarousel gameId={game.id}></GameCarousel>
       <ExpandableText

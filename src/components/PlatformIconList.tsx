@@ -16,7 +16,7 @@ import { IconType } from "react-icons";
 interface Props {
   platforms: Platform[];
 }
-export const PlatfromIconList = ({ platforms }: Props) => {
+export const PlatformIconList = ({ platforms }: Props) => {
   const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
     playstation: FaPlaystation,

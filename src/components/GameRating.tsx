@@ -1,6 +1,4 @@
-import { Box, Button } from "@chakra-ui/react";
-// import { FaStar, FaStarHalfStroke, FaRegStar } from "react-icons/fa6";
-
+import { Box } from "@chakra-ui/react";
 import { IoStar, IoStarHalf, IoStarOutline } from "react-icons/io5";
 
 interface Props {
@@ -8,7 +6,10 @@ interface Props {
 }
 
 export const GameRating = ({ rating }: Props) => {
-  rating = parseFloat(rating.toFixed(1));
+  const ratingStr = Number.isInteger(rating)
+    ? rating.toFixed(1) + ".0"
+    : rating.toFixed(1);
+
   return (
     <Box
       display="flex"
@@ -17,28 +18,20 @@ export const GameRating = ({ rating }: Props) => {
       alignItems="center"
       justifyContent={"center"}
     >
+      <Box paddingX={2} ml={3} fontSize="5xl">
+        {ratingStr}
+      </Box>
       {Array(5)
         .fill("")
         .map((_, i) => {
-          if (rating - i >= 1) {
+          if (parseFloat(ratingStr) - i >= 1) {
             return <IoStar color="gold" key={i} size={50}></IoStar>;
-          } else if (rating - i >= 0.5) {
+          } else if (parseFloat(ratingStr) - i >= 0.5) {
             return <IoStarHalf color="gold" key={i} size={50}></IoStarHalf>;
           } else {
             return <IoStarOutline color="gold" size={50}></IoStarOutline>;
           }
         })}
-
-      <Box
-        paddingX={2}
-        borderRadius={"9px"}
-        ml={3}
-        background={"black"}
-        fontSize="2xl"
-      
-      >
-        {rating}
-      </Box>
     </Box>
   );
 };

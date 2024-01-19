@@ -7,7 +7,7 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import Game from "../../entities/Game";
-import { PlatfromIconList } from "../PlatfromIconList";
+import { PlatformIconList } from "../PlatformIconList";
 import { CriticScore } from "../CriticScore";
 import getCroppedImages from "../../services/image-url";
 import { Emoji } from "../Emoji";
@@ -36,9 +36,9 @@ export const GameCard = ({ game }: Props) => {
       </Link>
       <CardBody>
         <HStack justifyContent={"space-between"} marginBottom={3}>
-          <PlatfromIconList
+          <PlatformIconList
             platforms={game.parent_platforms?.map((p) => p.platform)}
-          ></PlatfromIconList>
+          ></PlatformIconList>
           <CriticScore score={game.metacritic}></CriticScore>
         </HStack>
         <Heading

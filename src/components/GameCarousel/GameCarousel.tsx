@@ -2,7 +2,7 @@ import { Box, Image } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { FreeMode, Keyboard, Navigation, Thumbs } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import useScreenshots from "../../hooks/useScreenshots";
 import useTrailers from "../../hooks/useTrailers";
 import styles from "./GameCarousel.module.css";
@@ -19,8 +19,9 @@ interface Props {
 }
 
 export const GameCarousel = ({ gameId }: Props) => {
-  const [thumbsSwiper, setThumbsSwiper] = useState();
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [swiperActiveIndex, setSwiperActiveIndex] = useState(0);
+  const swiper = useSwiper();
   const { data: trailers } = useTrailers(gameId);
   const { data: screenshots, isLoading, error } = useScreenshots(gameId);
   if (isLoading) return null;
@@ -42,7 +43,7 @@ export const GameCarousel = ({ gameId }: Props) => {
         slidesPerView={1}
         modules={[Thumbs, FreeMode, Navigation, Keyboard]}
         thumbs={{
-          //@ts-ignore
+          //@ts-ignoreF
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
       >
@@ -59,10 +60,15 @@ export const GameCarousel = ({ gameId }: Props) => {
         ))}
         {screenshots?.results.map((screenshot) => (
           <SwiperSlide key={screenshot.id}>
-            <Image className={styles.slide} src={screenshot.image}></Image>
+            <Image
+              aspectRatio={"16 / 9"}
+              className={styles.slide}
+              src={screenshot.image}
+            ></Image>
           </SwiperSlide>
         ))}
       </Swiper>
+
       <Swiper
         modules={[Thumbs, FreeMode, Navigation]}
         className={styles.thumbnailsContainer}
@@ -75,7 +81,11 @@ export const GameCarousel = ({ gameId }: Props) => {
       >
         {trailers?.results.map((trailer) => (
           <SwiperSlide className={styles.videoThumbnail} key={trailer.id}>
-            <Image className={styles.thumbnail} src={trailer.preview}></Image>
+            <Image
+              aspectRatio={"16 / 9"}
+              className={styles.thumbnail}
+              src={trailer.preview}
+            ></Image>
             <FaRegCirclePlay
               size={40}
               className={styles.videoPlay}
@@ -84,7 +94,11 @@ export const GameCarousel = ({ gameId }: Props) => {
         ))}
         {screenshots?.results.map((screenshot) => (
           <SwiperSlide key={screenshot.id}>
-            <Image className={styles.thumbnail} src={screenshot.image}></Image>
+            <Image
+              aspectRatio={"16 / 9"}
+              className={styles.thumbnail}
+              src={screenshot.image}
+            ></Image>
           </SwiperSlide>
         ))}
       </Swiper>

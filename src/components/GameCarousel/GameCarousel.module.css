@@ -21,7 +21,7 @@
   opacity: 1;
 }
 .thumbnailsContainer {
-  min-width: 50vw;
+  min-width: 40vw;
   padding: 0.8 rem 0.5rem;
   background-color: rgb(18, 18, 18);
 }
