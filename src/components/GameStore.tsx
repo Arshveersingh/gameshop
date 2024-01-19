@@ -1,5 +1,7 @@
 import {
+  Box,
   Button,
+  Flex,
   GridItem,
   Icon,
   Link,
@@ -38,30 +40,36 @@ const iconMap: { [storeId: number]: { icon: IconType; storeName: string } } = {
 
 export const GameStores = ({ gameId: id }: Props) => {
   const { data, error } = useStore(id);
-  const {  colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   if (error) return;
   var color = colorMode === "dark" ? "gray.400" : "black.900";
   return (
     <>
-      <Text marginLeft={3} fontSize={"18px"} color={color}>
-        Where to buy
+      <Text marginLeft={3} fontSize={"2rem"} textAlign={"center"} color={color}>
+        Where to Buy
       </Text>
-      <SimpleGrid spacing={2} columns={{ base: 1, sm: 2, xl: 3 }}>
+      <Box margin={"1rem auto"} display={"flex"} flexWrap={"wrap"}>
         {data?.results.map((store) => (
-          <GridItem key={store.id} margin={3}>
-            <Link isExternal href={store.url}>
-              <Button color={color}>
+          <Link key={store.id} isExternal href={store.url}>
+            <Button
+              margin={"1rem"}
+              padding={"2rem"}
+              border={"solid"}
+              color={color}
+              background={"transparent"}
+            >
+              <Text fontSize={"1.5rem"}>
                 {iconMap[store.store_id].storeName}
-                <Icon
-                  marginLeft={2}
-                  boxSize={"20px"}
-                  as={iconMap[store.store_id].icon}
-                ></Icon>
-              </Button>
-            </Link>
-          </GridItem>
+              </Text>
+              <Icon
+                marginLeft={2}
+                boxSize={"3rem"}
+                as={iconMap[store.store_id].icon}
+              ></Icon>
+            </Button>
+          </Link>
         ))}
-      </SimpleGrid>
+      </Box>
     </>
   );
 };

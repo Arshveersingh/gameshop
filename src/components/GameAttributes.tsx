@@ -1,4 +1,11 @@
-import { Flex, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  GridItem,
+  Heading,
+  Image,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import iosSVG from "../assets/apple-ios.svg";
 import linuxSVG from "../assets/linux-tux.svg";
 import androidSVG from "../assets/logo-android.svg";
@@ -26,6 +33,7 @@ export const GameAttributes = ({ game }: Props) => {
     ios: iosSVG,
     android: androidSVG,
   };
+
   return (
     <>
       <Heading
@@ -38,7 +46,7 @@ export const GameAttributes = ({ game }: Props) => {
       </Heading>
       <Flex
         flexWrap={"wrap"}
-        gap={"1.5rem"}
+        gap={"1rem"}
         margin={"1rem auto"}
         justifyContent={"center"}
         alignItems={"center"}
@@ -52,28 +60,31 @@ export const GameAttributes = ({ game }: Props) => {
           ></Image>
         ))}
       </Flex>
-      <SimpleGrid columns={2} as="dl">
-        <DefinitionItem term="Metascore">
+      <SimpleGrid templateColumns={"1fr 2fr"} padding={"2rem"}>
+        <GridItem>Metacritic</GridItem>
+        <GridItem>
           <CriticScore score={game.metacritic} fontSize={"18px"}></CriticScore>
-        </DefinitionItem>
-        <DefinitionItem term="Genres">
+        </GridItem>
+        <GridItem>Genres</GridItem>
+        <GridItem>
           {game.genres.map((genre) => (
-            <Text key={genre.id}>{genre.name}</Text>
+            <>{genre.name}&nbsp;</>
           ))}
-        </DefinitionItem>
-        <DefinitionItem term="Publishers">
+        </GridItem>
+        <GridItem>Publishers</GridItem>
+        <GridItem>
           {game.publishers.map((publisher) => (
-            <Text key={publisher.id}>{publisher.name}</Text>
+            <>{publisher.name}&nbsp;</>
           ))}
-        </DefinitionItem>
-        <DefinitionItem term="ESRB Rating">
-          <Text>{game.esrb_rating?.name || "Not Rated"}</Text>
-        </DefinitionItem>
-        <DefinitionItem term="Developers">
+        </GridItem>
+        <GridItem>ESRB Rating</GridItem>
+        <GridItem>{game.esrb_rating?.name || "Not Rated"}</GridItem>
+        <GridItem>Developers</GridItem>
+        <GridItem>
           {game.developers.map((developer) => (
-            <Text key={developer.id}>{developer.name}</Text>
+            <>{developer.name}&nbsp;</>
           ))}
-        </DefinitionItem>
+        </GridItem>
       </SimpleGrid>
     </>
   );

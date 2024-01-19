@@ -4,7 +4,6 @@ import APIClient, { FetchResponse } from "../services/api-client";
 
 const useStore = (gameId: number) => {
   const apiClient = new APIClient<Store>(`/games/${gameId}/stores`);
-
   return useQuery<FetchResponse<Store>, Error>({
     queryKey: ["stores", gameId],
     queryFn: apiClient.getAll,
