@@ -1,11 +1,4 @@
-import {
-  Flex,
-  GridItem,
-  Heading,
-  Image,
-  SimpleGrid,
-  Text,
-} from "@chakra-ui/react";
+import { Flex, GridItem, Heading, Image, SimpleGrid } from "@chakra-ui/react";
 import iosSVG from "../assets/apple-ios.svg";
 import linuxSVG from "../assets/linux-tux.svg";
 import androidSVG from "../assets/logo-android.svg";
@@ -16,7 +9,6 @@ import windowsSVG from "../assets/windows-darkblue-2012-svg.svg";
 import xboxSVG from "../assets/xbox-9.svg";
 import Game from "../entities/Game";
 import { CriticScore } from "./CriticScore";
-import { DefinitionItem } from "./DefinitionItem";
 
 interface Props {
   game: Game;

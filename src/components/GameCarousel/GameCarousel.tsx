@@ -2,7 +2,7 @@ import { Box, Image } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { FreeMode, Keyboard, Navigation, Thumbs } from "swiper/modules";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import useScreenshots from "../../hooks/useScreenshots";
 import useTrailers from "../../hooks/useTrailers";
 import styles from "./GameCarousel.module.css";
@@ -21,7 +21,6 @@ interface Props {
 export const GameCarousel = ({ gameId }: Props) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [swiperActiveIndex, setSwiperActiveIndex] = useState(0);
-  const swiper = useSwiper();
   const { data: trailers } = useTrailers(gameId);
   const { data: screenshots, isLoading, error } = useScreenshots(gameId);
   if (isLoading) return null;
@@ -35,6 +34,7 @@ export const GameCarousel = ({ gameId }: Props) => {
           for (let i = 0; i < videoElements.length; i++) {
             videoElements[i].pause();
           }
+          setSwiperActiveIndex(swiper.activeIndex);
         }}
         loop={false}
         spaceBetween={50}
@@ -79,11 +79,13 @@ export const GameCarousel = ({ gameId }: Props) => {
         spaceBetween={20}
         navigation={true}
       >
-        {trailers?.results.map((trailer) => (
+        {trailers?.results.map((trailer, i) => (
           <SwiperSlide className={styles.videoThumbnail} key={trailer.id}>
             <Image
               aspectRatio={"16 / 9"}
-              className={styles.thumbnail}
+              className={
+                swiperActiveIndex === i ? styles.activeSlide : styles.thumbnail
+              }
               src={trailer.preview}
             ></Image>
             <FaRegCirclePlay
@@ -92,11 +94,15 @@ export const GameCarousel = ({ gameId }: Props) => {
             ></FaRegCirclePlay>
           </SwiperSlide>
         ))}
-        {screenshots?.results.map((screenshot) => (
+        {screenshots?.results.map((screenshot, i) => (
           <SwiperSlide key={screenshot.id}>
             <Image
               aspectRatio={"16 / 9"}
-              className={styles.thumbnail}
+              className={
+                swiperActiveIndex === i + (trailers?.count || 0)
+                  ? styles.activeSlide
+                  : styles.thumbnail
+              }
               src={screenshot.image}
             ></Image>
           </SwiperSlide>

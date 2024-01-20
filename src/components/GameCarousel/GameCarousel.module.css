@@ -6,19 +6,19 @@
 }
 .activeSlide {
   opacity: 1;
-  border: 12px whitesmoke solid;
+  border: 2px solid whitesmoke;
   border-radius: 9px;
 }
 .thumbnail {
   border: 2px solid transparent;
   opacity: 0.5;
   border-radius: 9px;
-  transition: opacity ease-in 0.2s;
+  transition: opacity ease-in 0.8s;
   transition: border ease-in 0.4s;
 }
 .thumbnail:hover {
-  border: 2px whitesmoke solid;
   opacity: 1;
+  transition: opacity ease-in 0.2s;
 }
 .thumbnailsContainer {
   min-width: 40vw;
