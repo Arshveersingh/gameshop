@@ -23,7 +23,7 @@ export const GameCarousel = ({ gameId }: Props) => {
   const [swiperActiveIndex, setSwiperActiveIndex] = useState(0);
   const { data: trailers } = useTrailers(gameId);
   const { data: screenshots, isLoading, error } = useScreenshots(gameId);
-  const backgroundColor = useColorModeValue("#a8a7a2", "#121212");
+  // const backgroundColor = useColorModeValue("#a8a7a2", "#121212");
   if (isLoading) return null;
   if (error) throw error;
 

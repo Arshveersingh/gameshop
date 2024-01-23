@@ -15,13 +15,17 @@ export const NavBar = () => {
     setSearchText("");
     setSortOrder("");
 
-    
     navigate("/");
     setDates("");
   };
 
   return (
-    <HStack padding="10px" width={"100%"}>
+    <HStack
+      padding="10px"
+      width={"100%"}
+      display={"flex"}
+      justifyContent={"space-between"}
+    >
       <Link to="/" onClick={handleClick}>
         <Image objectFit="cover" src={logo} boxSize="60px"></Image>
       </Link>

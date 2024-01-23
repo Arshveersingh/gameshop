@@ -1,14 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  GridItem,
-  Icon,
-  Link,
-  SimpleGrid,
-  Text,
-  useColorMode,
-} from "@chakra-ui/react";
+import { Box, Button, Icon, Link, Text, useColorMode } from "@chakra-ui/react";
 import { IconType } from "react-icons";
 import {
   FaApple,

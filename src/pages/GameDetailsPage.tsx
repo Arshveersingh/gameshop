@@ -1,6 +1,5 @@
-import { Box, Button, Heading, Spinner } from "@chakra-ui/react";
+import { Box, Button, Heading } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
-// import { AchievementList } from "../components/AchievementList";
 import { BackgroundImage } from "../components/BackGroundImage/BackgroundImage";
 import { ExpandableText } from "../components/ExpandableText";
 import { GameAttributes } from "../components/GameAttributes";
@@ -8,7 +7,7 @@ import GameCarousel from "../components/GameCarousel/GameCarousel";
 import { GameRating } from "../components/GameRating";
 import { GameRequirements } from "../components/GameRequirements";
 import { GameStores } from "../components/GameStore";
-// import { RedditPosts } from "../components/RedditPosts";
+import { LoadingText } from "../components/LoadingText/LoadingText";
 import useGame from "../hooks/useGame";
 
 export const GameDetailPage = () => {

@@ -39,8 +39,7 @@ export const SearchInput = () => {
         navigate("/");
       }}
     >
-      <InputGroup>
-        <InputLeftElement children={<BsSearch></BsSearch>}></InputLeftElement>
+      <InputGroup className={styles.searchBar}>
         <Input
           borderRadius={20}
           placeholder="Search games..."
@@ -50,7 +49,7 @@ export const SearchInput = () => {
         <InputRightElement
           children={
             <span className={styles.hotKeys}>
-              <Kbd>ctrl</Kbd> + <Kbd>K</Kbd>
+              <Kbd opacity={0.5}>ctrl</Kbd> + <Kbd opacity={0.5}>K</Kbd>
             </span>
           }
         ></InputRightElement>

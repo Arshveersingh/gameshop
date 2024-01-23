@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import Achievement from "../entities/Achievement";
 import APIClient, { FetchResponse } from "../services/api-client";
 import ms from "ms";

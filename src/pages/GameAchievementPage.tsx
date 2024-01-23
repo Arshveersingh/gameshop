@@ -38,9 +38,9 @@ export const GameAchievementPage = () => {
   const backgroundColor = useColorModeValue("white.900", "gray.900");
   const color = useColorModeValue("black.900", "black.400");
   if (error) return <Text>{error.message}</Text>;
-  if (!game) return;
   if (isLoadingGames || isLoadingAchievements)
     return <LoadingText></LoadingText>;
+  if (!game) return;
   return (
     <InfiniteScroll
       dataLength={fetchedAchievementsCount}
