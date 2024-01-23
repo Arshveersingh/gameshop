@@ -48,7 +48,12 @@ export const GameStores = ({ gameId: id }: Props) => {
       <Text marginLeft={3} fontSize={"2rem"} textAlign={"center"} color={color}>
         Where to Buy
       </Text>
-      <Box margin={"1rem auto"} display={"flex"} flexWrap={"wrap"}>
+      <Box
+        margin={"1rem auto"}
+        display={"flex"}
+        flexWrap={"wrap"}
+        justifyContent={"center"}
+      >
         {data?.results.map((store) => (
           <Link key={store.id} isExternal href={store.url}>
             <Button

@@ -1,0 +1,9 @@
+.animatedText > :nth-child(n + 2) {
+  opacity: 0;
+  animation: loadingAnimation 0.7s alternate infinite;
+}
+@keyframes loadingAnimation {
+  100% {
+    opacity: 1;
+  }
+}

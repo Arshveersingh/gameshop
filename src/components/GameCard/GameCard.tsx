@@ -5,6 +5,7 @@ import {
   Heading,
   Image,
   useColorMode,
+  Text,
 } from "@chakra-ui/react";
 import Game from "../../entities/Game";
 import { PlatformIconList } from "../PlatformIconList";
@@ -45,7 +46,11 @@ export const GameCard = ({ game }: Props) => {
           fontSize={"2xl"}
           fontFamily="'Bebas Neue', 'Roboto', 'Sans-Serif';"
         >
-          <Link to={`/games/${game.slug}`}>{game.name}</Link>
+          <Link to={`/games/${game.slug}`}>
+            <Text fontWeight={1} letterSpacing={2}>
+              {game.name}
+            </Text>
+          </Link>
         </Heading>
         <Emoji
           rating={checkReleaseDate(game.released) ? game.rating : -1}

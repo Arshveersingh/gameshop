@@ -1,4 +1,4 @@
-import { Box, Image } from "@chakra-ui/react";
+import { Box, Image, useColorModeValue } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { FreeMode, Keyboard, Navigation, Thumbs } from "swiper/modules";
@@ -23,6 +23,7 @@ export const GameCarousel = ({ gameId }: Props) => {
   const [swiperActiveIndex, setSwiperActiveIndex] = useState(0);
   const { data: trailers } = useTrailers(gameId);
   const { data: screenshots, isLoading, error } = useScreenshots(gameId);
+  const backgroundColor = useColorModeValue("#a8a7a2", "#121212");
   if (isLoading) return null;
   if (error) throw error;
 
@@ -72,6 +73,7 @@ export const GameCarousel = ({ gameId }: Props) => {
       <Swiper
         modules={[Thumbs, FreeMode, Navigation]}
         className={styles.thumbnailsContainer}
+        backgroundColor={"red"}
         // @ts-ignore
         onSwiper={setThumbsSwiper}
         watchSlidesProgress

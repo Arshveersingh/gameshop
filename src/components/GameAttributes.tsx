@@ -1,4 +1,11 @@
-import { Flex, GridItem, Heading, Image, SimpleGrid } from "@chakra-ui/react";
+import {
+  Flex,
+  GridItem,
+  Heading,
+  Image,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import iosSVG from "../assets/apple-ios.svg";
 import linuxSVG from "../assets/linux-tux.svg";
 import androidSVG from "../assets/logo-android.svg";
@@ -52,29 +59,46 @@ export const GameAttributes = ({ game }: Props) => {
           ></Image>
         ))}
       </Flex>
-      <SimpleGrid templateColumns={"1fr 2fr"} padding={"2rem"}>
-        <GridItem>Metacritic</GridItem>
+      <SimpleGrid templateColumns={"1fr 1fr"} padding={"2rem"}>
         <GridItem>
-          <CriticScore score={game.metacritic} fontSize={"18px"}></CriticScore>
+          <Text fontSize={"1.2rem"}>Metacritic</Text>
         </GridItem>
-        <GridItem>Genres</GridItem>
+        <GridItem>
+          <CriticScore
+            score={game.metacritic}
+            fontSize={"1.2rem"}
+          ></CriticScore>
+        </GridItem>
+        <GridItem>
+          <Text fontSize={"1.2rem"}>Genres</Text>
+        </GridItem>
         <GridItem>
           {game.genres.map((genre) => (
-            <>{genre.name}&nbsp;</>
+            <Text fontSize={"1.2rem"}>{genre.name}&nbsp;</Text>
           ))}
         </GridItem>
-        <GridItem>Publishers</GridItem>
+        <GridItem>
+          <Text fontSize={"1.2rem"}>Publishers</Text>
+        </GridItem>
         <GridItem>
           {game.publishers.map((publisher) => (
-            <>{publisher.name}&nbsp;</>
+            <Text fontSize={"1.2rem"}>{publisher.name}&nbsp;</Text>
           ))}
         </GridItem>
-        <GridItem>ESRB Rating</GridItem>
-        <GridItem>{game.esrb_rating?.name || "Not Rated"}</GridItem>
-        <GridItem>Developers</GridItem>
+        <GridItem>
+          <Text fontSize={"1.2rem"}>ESRB Rating</Text>
+        </GridItem>
+        <GridItem>
+          <Text fontSize={"1.2rem"}>
+            {game.esrb_rating?.name || "Not Rated"}
+          </Text>
+        </GridItem>
+        <GridItem>
+          <Text fontSize={"1.2rem"}>Developers</Text>
+        </GridItem>
         <GridItem>
           {game.developers.map((developer) => (
-            <>{developer.name}&nbsp;</>
+            <Text fontSize={"1.2rem"}>{developer.name}&nbsp;</Text>
           ))}
         </GridItem>
       </SimpleGrid>

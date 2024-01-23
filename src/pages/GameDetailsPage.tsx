@@ -15,7 +15,7 @@ export const GameDetailPage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { data: game, isLoading, error } = useGame(slug!);
-  if (isLoading) return <Spinner></Spinner>;
+  if (isLoading) return <LoadingText></LoadingText>;
   if (error || !game) throw error;
   return (
     <>

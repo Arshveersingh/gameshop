@@ -23,7 +23,6 @@
 .thumbnailsContainer {
   min-width: 40vw;
   padding: 0.8 rem 0.5rem;
-  background-color: rgb(18, 18, 18);
 }
 .videoThumbnail {
   position: relative;

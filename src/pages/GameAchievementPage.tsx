@@ -17,20 +17,18 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useParams } from "react-router-dom";
 import useAchievements from "../hooks/useAchievements";
 import useGame from "../hooks/useGame";
+import { LoadingText } from "../components/LoadingText/LoadingText";
 
-interface Props {
-  totalAchievements: number;
-}
 export const GameAchievementPage = () => {
   const { slug } = useParams();
   const {
     data: achievements,
     error,
-    isLoading,
+    isLoading: isLoadingAchievements,
     fetchNextPage,
     hasNextPage,
   } = useAchievements(slug);
-  const { data: game } = useGame(slug);
+  const { data: game, isLoading: isLoadingGames } = useGame(slug);
   const totalAchievements = achievements?.pages[0].count;
   const fetchedAchievementsCount =
     achievements?.pages.reduce(
@@ -41,6 +39,8 @@ export const GameAchievementPage = () => {
   const color = useColorModeValue("black.900", "black.400");
   if (error) return <Text>{error.message}</Text>;
   if (!game) return;
+  if (isLoadingGames || isLoadingAchievements)
+    return <LoadingText></LoadingText>;
   return (
     <InfiniteScroll
       dataLength={fetchedAchievementsCount}
