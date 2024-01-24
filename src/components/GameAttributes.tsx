@@ -5,6 +5,7 @@ import {
   Image,
   SimpleGrid,
   Text,
+  Box,
 } from "@chakra-ui/react";
 import iosSVG from "../assets/apple-ios.svg";
 import linuxSVG from "../assets/linux-tux.svg";
@@ -59,47 +60,93 @@ export const GameAttributes = ({ game }: Props) => {
           ></Image>
         ))}
       </Flex>
-      <SimpleGrid templateColumns={"1fr 1fr"} padding={"2rem"}>
-        <GridItem>
+      <SimpleGrid
+        borderTop={"1px solid rgb(75, 78, 83)"}
+        templateColumns={"1fr 1fr"}
+        gap={"0rem"}
+      >
+        <GridItem
+          borderBottom={"1px solid rgb(75, 78, 83)"}
+          padding={"1rem 0.5rem"}
+        >
           <Text fontSize={"1.2rem"}>Metacritic</Text>
         </GridItem>
-        <GridItem>
+        <GridItem
+          padding={"1rem 0.5rem"}
+          borderBottom={"1px solid rgb(75, 78, 83)"}
+        >
           <CriticScore
             score={game.metacritic}
             fontSize={"1.2rem"}
           ></CriticScore>
         </GridItem>
-        <GridItem>
+        <GridItem
+          padding={"1rem 0.5rem"}
+          borderBottom={"1px solid rgb(75, 78, 83)"}
+        >
           <Text fontSize={"1.2rem"}>Genres</Text>
         </GridItem>
-        <GridItem>
-          {game.genres.map((genre) => (
-            <Text fontSize={"1.2rem"}>{genre.name}&nbsp;</Text>
-          ))}
+        <GridItem
+          padding={"1.2rem 0.5rem"}
+          borderBottom={"1px solid rgb(75, 78, 83)"}
+        >
+          <Box fontSize={"1.2rem"} gap={"2rem"}>
+            {game.genres.map((genre) => (
+              <Text marginRight={"1.2rem"} display={"inline"}>
+                {genre.name}
+              </Text>
+            ))}
+          </Box>
         </GridItem>
-        <GridItem>
+        <GridItem
+          padding={"1rem 0.5rem"}
+          borderBottom={"1px solid rgb(75, 78, 83)"}
+        >
           <Text fontSize={"1.2rem"}>Publishers</Text>
         </GridItem>
-        <GridItem>
-          {game.publishers.map((publisher) => (
-            <Text fontSize={"1.2rem"}>{publisher.name}&nbsp;</Text>
-          ))}
+        <GridItem
+          padding={"1rem 0.5rem"}
+          borderBottom={"1px solid rgb(75, 78, 83)"}
+        >
+          <Box fontSize={"1.2rem"} gap={"2rem"}>
+            {game.publishers.map((publisher) => (
+              <Text marginRight={"1.2rem"} display={"inline"}>
+                {publisher.name}
+              </Text>
+            ))}
+          </Box>
         </GridItem>
-        <GridItem>
+        <GridItem
+          padding={"1rem 0.5rem"}
+          borderBottom={"1px solid rgb(75, 78, 83)"}
+        >
           <Text fontSize={"1.2rem"}>ESRB Rating</Text>
         </GridItem>
-        <GridItem>
+        <GridItem
+          padding={"1rem 0.5rem"}
+          borderBottom={"1px solid rgb(75, 78, 83)"}
+        >
           <Text fontSize={"1.2rem"}>
             {game.esrb_rating?.name || "Not Rated"}
           </Text>
         </GridItem>
-        <GridItem>
+        <GridItem
+          padding={"1rem 0.5rem"}
+          borderBottom={"1px solid rgb(75, 78, 83)"}
+        >
           <Text fontSize={"1.2rem"}>Developers</Text>
         </GridItem>
-        <GridItem>
-          {game.developers.map((developer) => (
-            <Text fontSize={"1.2rem"}>{developer.name}&nbsp;</Text>
-          ))}
+        <GridItem
+          padding={"1rem 0.5rem"}
+          borderBottom={"1px solid rgb(75, 78, 83)"}
+        >
+          <Box fontSize={"1.2rem"} gap={"2rem"}>
+            {game.developers.map((developer) => (
+              <Text marginRight={"1.2rem"} display={"inline"}>
+                {developer.name}
+              </Text>
+            ))}
+          </Box>
         </GridItem>
       </SimpleGrid>
     </>
