@@ -21,13 +21,18 @@ export const GenreList = () => {
   if (error) return null;
   if (isLoading)
     return (
-      <Spinner
-        thickness="4px"
-        speed="0.65s"
-        emptyColor="gray.200"
-        color="blue.500"
-        size="lg"
-      ></Spinner>
+      <>
+        <Heading marginBottom={3} fontSize={"3xl"}>
+          Genres
+        </Heading>
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="gray.600"
+          size="lg"
+        ></Spinner>
+      </>
     );
   const color = colorMode === "dark" ? "gray.400" : "black.900";
   return (

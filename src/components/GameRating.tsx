@@ -6,9 +6,7 @@ interface Props {
 }
 
 export const GameRating = ({ rating }: Props) => {
-  const ratingStr = Number.isInteger(rating)
-    ? rating.toFixed(1) + ".0"
-    : rating.toFixed(1);
+  const ratingStr = rating.toFixed(1);
 
   return (
     <Box
@@ -29,7 +27,9 @@ export const GameRating = ({ rating }: Props) => {
           } else if (parseFloat(ratingStr) - i >= 0.5) {
             return <IoStarHalf color="gold" key={i} size={50}></IoStarHalf>;
           } else {
-            return <IoStarOutline color="gold" size={50}></IoStarOutline>;
+            return (
+              <IoStarOutline key={i} color="gold" size={50}></IoStarOutline>
+            );
           }
         })}
     </Box>

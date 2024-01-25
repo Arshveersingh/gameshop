@@ -73,7 +73,6 @@ export const GameCarousel = ({ gameId }: Props) => {
       <Swiper
         modules={[Thumbs, FreeMode, Navigation]}
         className={styles.thumbnailsContainer}
-        backgroundColor={"red"}
         // @ts-ignore
         onSwiper={setThumbsSwiper}
         watchSlidesProgress

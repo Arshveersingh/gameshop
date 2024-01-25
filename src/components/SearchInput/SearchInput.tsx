@@ -49,7 +49,7 @@ export const SearchInput = () => {
         <InputRightElement
           children={
             <span className={styles.hotKeys}>
-              <Kbd opacity={0.5}>ctrl</Kbd> + <Kbd opacity={0.5}>K</Kbd>
+              <Kbd>ctrl</Kbd> + <Kbd>K</Kbd>
             </span>
           }
         ></InputRightElement>

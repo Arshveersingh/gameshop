@@ -35,7 +35,13 @@ export const GameStores = ({ gameId: id }: Props) => {
   var color = colorMode === "dark" ? "gray.400" : "black.900";
   return (
     <>
-      <Text marginLeft={3} fontSize={"2rem"} textAlign={"center"} color={color}>
+      <Text
+        marginTop={"2.5rem"}
+        marginLeft={3}
+        fontSize={"2rem"}
+        textAlign={"center"}
+        color={color}
+      >
         Where to Buy
       </Text>
       <Box

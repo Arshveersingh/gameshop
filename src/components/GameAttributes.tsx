@@ -39,7 +39,8 @@ export const GameAttributes = ({ game }: Props) => {
       <Heading
         width={"2xl"}
         display={"block"}
-        margin={"1rem auto"}
+        margin={"auto"}
+        marginTop={"2rem"}
         textAlign={"center"}
       >
         Platforms
@@ -48,6 +49,7 @@ export const GameAttributes = ({ game }: Props) => {
         flexWrap={"wrap"}
         gap={"1rem"}
         margin={"1rem auto"}
+        marginBottom={"3rem"}
         justifyContent={"center"}
         alignItems={"center"}
         maxWidth={"70vw"}
@@ -63,7 +65,6 @@ export const GameAttributes = ({ game }: Props) => {
       <SimpleGrid
         borderTop={"1px solid rgb(75, 78, 83)"}
         templateColumns={"1fr 1fr"}
-        gap={"0rem"}
       >
         <GridItem
           borderBottom={"1px solid rgb(75, 78, 83)"}
@@ -92,7 +93,7 @@ export const GameAttributes = ({ game }: Props) => {
         >
           <Box fontSize={"1.2rem"} gap={"2rem"}>
             {game.genres.map((genre) => (
-              <Text marginRight={"1.2rem"} display={"inline"}>
+              <Text key={genre.id} marginRight={"1.2rem"} display={"inline"}>
                 {genre.name}
               </Text>
             ))}
@@ -110,7 +111,11 @@ export const GameAttributes = ({ game }: Props) => {
         >
           <Box fontSize={"1.2rem"} gap={"2rem"}>
             {game.publishers.map((publisher) => (
-              <Text marginRight={"1.2rem"} display={"inline"}>
+              <Text
+                key={publisher.id}
+                marginRight={"1.2rem"}
+                display={"inline"}
+              >
                 {publisher.name}
               </Text>
             ))}
@@ -142,7 +147,11 @@ export const GameAttributes = ({ game }: Props) => {
         >
           <Box fontSize={"1.2rem"} gap={"2rem"}>
             {game.developers.map((developer) => (
-              <Text marginRight={"1.2rem"} display={"inline"}>
+              <Text
+                key={developer.id}
+                marginRight={"1.2rem"}
+                display={"inline"}
+              >
                 {developer.name}
               </Text>
             ))}

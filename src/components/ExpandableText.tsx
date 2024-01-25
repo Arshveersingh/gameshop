@@ -27,9 +27,10 @@ export const ExpandableText = ({
   }
   return (
     <>
-      <Text fontSize="lg" fontFamily={fontFamily} lineHeight={1.3}>
+      <Text fontSize="2xl" fontFamily={fontFamily} lineHeight={1.2}>
         {summary}
         <Button
+          fontSize="2xl"
           color={"white"}
           variant={"link"}
           size="lg"

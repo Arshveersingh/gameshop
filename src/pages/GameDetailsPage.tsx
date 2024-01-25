@@ -22,9 +22,10 @@ export const GameDetailPage = () => {
       <Box>
         <Heading
           textAlign={"center"}
-          size={"xl"}
+          size={"3xl"}
           fontFamily="'Bebas Neue', 'Roboto', 'Sans-Serif';"
           marginBottom={0}
+          letterSpacing={"8px"}
         >
           {game?.name}
         </Heading>
@@ -40,6 +41,7 @@ export const GameDetailPage = () => {
       </ExpandableText>
       <GameAttributes game={game}></GameAttributes>
       <GameStores gameId={game.id}></GameStores>
+
       <GameRequirements game={game}></GameRequirements>
       {/* <AchievementList game={game}></AchievementList> */}
       <Button

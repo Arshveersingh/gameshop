@@ -1,4 +1,11 @@
-import { Button, SimpleGrid, Text, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  SimpleGrid,
+  Spinner,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { GameCard } from "./GameCard/GameCard";
@@ -28,12 +35,15 @@ export const GameGrid = () => {
         fetchNextPage();
       }}
       loader={
-        <Button
-          opacity={1}
-          color={color}
-          isLoading
-          loadingText="Loading"
-        ></Button>
+        <Box textAlign={"center"}>
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="gray.600"
+            size="lg"
+          ></Spinner>
+        </Box>
       }
     >
       <SimpleGrid
