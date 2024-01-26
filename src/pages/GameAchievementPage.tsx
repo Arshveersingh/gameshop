@@ -27,8 +27,8 @@ export const GameAchievementPage = () => {
     isLoading: isLoadingAchievements,
     fetchNextPage,
     hasNextPage,
-  } = useAchievements(slug);
-  const { data: game, isLoading: isLoadingGames } = useGame(slug);
+  } = useAchievements(slug ?? "");
+  const { data: game, isLoading: isLoadingGames } = useGame(slug ?? "");
   const totalAchievements = achievements?.pages[0].count;
   const fetchedAchievementsCount =
     achievements?.pages.reduce(

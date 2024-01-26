@@ -1,12 +1,5 @@
-import {
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  Kbd,
-} from "@chakra-ui/react";
+import { Input, InputGroup, InputRightElement, Kbd } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
-import { BsSearch } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import useGameQueryStore from "../../stores/GameQueryStore";
 import styles from "./SearchInput.module.css";

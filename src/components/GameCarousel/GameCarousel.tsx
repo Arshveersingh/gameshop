@@ -23,7 +23,7 @@ export const GameCarousel = ({ gameId }: Props) => {
   const [swiperActiveIndex, setSwiperActiveIndex] = useState(0);
   const { data: trailers } = useTrailers(gameId);
   const { data: screenshots, isLoading, error } = useScreenshots(gameId);
-  // const backgroundColor = useColorModeValue("#a8a7a2", "#121212");
+  const backgroundColor = useColorModeValue("#a8a7a2", "#121212");
   if (isLoading) return null;
   if (error) throw error;
 
@@ -70,45 +70,49 @@ export const GameCarousel = ({ gameId }: Props) => {
         ))}
       </Swiper>
 
-      <Swiper
-        modules={[Thumbs, FreeMode, Navigation]}
-        className={styles.thumbnailsContainer}
-        // @ts-ignore
-        onSwiper={setThumbsSwiper}
-        watchSlidesProgress
-        slidesPerView={4}
-        spaceBetween={20}
-        navigation={true}
-      >
-        {trailers?.results.map((trailer, i) => (
-          <SwiperSlide className={styles.videoThumbnail} key={trailer.id}>
-            <Image
-              aspectRatio={"16 / 9"}
-              className={
-                swiperActiveIndex === i ? styles.activeSlide : styles.thumbnail
-              }
-              src={trailer.preview}
-            ></Image>
-            <FaRegCirclePlay
-              size={40}
-              className={styles.videoPlay}
-            ></FaRegCirclePlay>
-          </SwiperSlide>
-        ))}
-        {screenshots?.results.map((screenshot, i) => (
-          <SwiperSlide key={screenshot.id}>
-            <Image
-              aspectRatio={"16 / 9"}
-              className={
-                swiperActiveIndex === i + (trailers?.count || 0)
-                  ? styles.activeSlide
-                  : styles.thumbnail
-              }
-              src={screenshot.image}
-            ></Image>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <Box backgroundColor={backgroundColor}>
+        <Swiper
+          modules={[Thumbs, FreeMode, Navigation]}
+          className={styles.thumbnailsContainer}
+          // @ts-ignore
+          onSwiper={setThumbsSwiper}
+          watchSlidesProgress
+          slidesPerView={4}
+          spaceBetween={20}
+          navigation={true}
+        >
+          {trailers?.results.map((trailer, i) => (
+            <SwiperSlide className={styles.videoThumbnail} key={trailer.id}>
+              <Image
+                aspectRatio={"16 / 9"}
+                className={
+                  swiperActiveIndex === i
+                    ? styles.activeSlide
+                    : styles.thumbnail
+                }
+                src={trailer.preview}
+              ></Image>
+              <FaRegCirclePlay
+                size={40}
+                className={styles.videoPlay}
+              ></FaRegCirclePlay>
+            </SwiperSlide>
+          ))}
+          {screenshots?.results.map((screenshot, i) => (
+            <SwiperSlide key={screenshot.id}>
+              <Image
+                aspectRatio={"16 / 9"}
+                className={
+                  swiperActiveIndex === i + (trailers?.count || 0)
+                    ? styles.activeSlide
+                    : styles.thumbnail
+                }
+                src={screenshot.image}
+              ></Image>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Box>
     </Box>
   );
 };
