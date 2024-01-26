@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Card,
   CardBody,
@@ -8,6 +9,7 @@ import {
   Heading,
   Image,
   SimpleGrid,
+  Spinner,
   Stack,
   Text,
   useColorModeValue,
@@ -48,7 +50,17 @@ export const GameAchievementPage = () => {
       next={() => {
         fetchNextPage();
       }}
-      loader={<Button opacity={1} isLoading loadingText="Loading"></Button>}
+      loader={
+        <Box textAlign={"center"}>
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="gray.600"
+            size="lg"
+          ></Spinner>
+        </Box>
+      }
     >
       <Heading margin={5}>Total {totalAchievements} Achievements</Heading>
       {achievements?.pages.map((page, index) => (
@@ -77,7 +89,7 @@ export const GameAchievementPage = () => {
                             whiteSpace={"normal"}
                             fontSize={"lg"}
                           >
-                            {achievement.name}
+                            P{achievement.name}
                           </CardHeader>
                         </Stack>
                       </HStack>
