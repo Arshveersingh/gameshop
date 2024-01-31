@@ -3,6 +3,7 @@
   width: 60vw;
   margin: 0 auto;
   margin-bottom: 1rem;
+  color-scheme: light;
 }
 .activeSlide {
   opacity: 1;
@@ -20,8 +21,9 @@
   opacity: 1;
   transition: opacity ease-in 0.2s;
 }
+
 .thumbnailsContainer {
-  min-width: 40vw;
+  max-width: 50vw;
   padding: 0.8 rem 0.5rem;
 }
 .videoThumbnail {
@@ -33,4 +35,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0.65;
+}
+@media screen and (max-width: 660px) {
+  .slide {
+    border-radius: 15px;
+    width: 80vw;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    color-scheme: light;
+  }
+  .thumbnailsContainer {
+    max-width: 700vw;
+    padding: 0.8 rem 0.5rem;
+  }
 }

@@ -17,16 +17,15 @@ interface Props {
 }
 
 export const GameRequirements = ({ game }: Props) => {
-  const color = useColorModeValue("black.900", "gray.400");
+  const primaryColor = useColorModeValue("blue.600", "gray.400");
+  const secondaryColor = useColorModeValue("black", "white");
   const platforms = game.platforms.filter(
     (obj) => Object.keys(obj.requirements).length !== 0
   );
 
   return (
     <>
-      {platforms.length > 0 && (
-        <Text fontSize={"3xl"}>System Requirements</Text>
-      )}
+      {platforms.length > 0 && <Text fontSize={"xl"}>System Requirements</Text>}
       <Tabs>
         <TabList>
           {platforms.map(({ platform }) => {
@@ -44,16 +43,23 @@ export const GameRequirements = ({ game }: Props) => {
               ? requirements.recommended.substring("Recommended:".length)
               : requirements.recommended;
             return (
-              <TabPanel>
+              <TabPanel
+                fontFamily={"'Roboto', 'Monospace';"}
+                lineHeight={"2.5rem"}
+              >
                 <SimpleGrid
-                  templateColumns={"1fr 1fr"}
+                  templateColumns={{ base: "1fr", md: "1fr 1fr" }}
                   gap={4}
                   margin={4}
                   key={platform.id}
                 >
                   <GridItem>
                     {minimumReq && (
-                      <Text fontSize={"2xl"} color={color}>
+                      <Text
+                        fontSize={"2xl"}
+                        color={primaryColor}
+                        letterSpacing={2}
+                      >
                         Minimum
                       </Text>
                     )}
@@ -61,22 +67,22 @@ export const GameRequirements = ({ game }: Props) => {
                       if (text.includes(":")) {
                         const textArray = text.split(":", 2);
                         return (
-                          <Box>
+                          <Box fontSize={"xl"}>
                             <Text
-                              fontSize={"xl"}
-                              color={color}
+                              paddingRight={"5px"}
+                              color={primaryColor}
                               display={"inline"}
                             >
                               {textArray[0]}:
                             </Text>
-                            <Text display={"inline"} fontSize={"xl"}>
+                            <Text color={secondaryColor} display={"inline"}>
                               {textArray[1]}
                             </Text>
                           </Box>
                         );
                       }
                       return (
-                        <Text fontSize={"xl"} paddingLeft={4}>
+                        <Text fontSize={"lg"} paddingLeft={4}>
                           {text}
                         </Text>
                       );
@@ -84,7 +90,11 @@ export const GameRequirements = ({ game }: Props) => {
                   </GridItem>
                   <GridItem>
                     {recommendedReq && (
-                      <Text fontSize={"2xl"} color={color}>
+                      <Text
+                        fontSize={"2xl"}
+                        color={primaryColor}
+                        letterSpacing={2}
+                      >
                         Recommended
                       </Text>
                     )}
@@ -92,15 +102,11 @@ export const GameRequirements = ({ game }: Props) => {
                       if (text.includes(":")) {
                         const textArray = text.split(":", 2);
                         return (
-                          <Box>
-                            <Text
-                              fontSize={"xl"}
-                              color={color}
-                              display={"inline"}
-                            >
+                          <Box fontSize={"xl"}>
+                            <Text color={primaryColor} display={"inline"}>
                               {textArray[0]}:
                             </Text>
-                            <Text display={"inline"} fontSize={"xl"}>
+                            <Text color={secondaryColor} display={"inline"}>
                               {textArray[1]}
                             </Text>
                           </Box>

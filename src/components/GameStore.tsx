@@ -32,7 +32,8 @@ export const GameStores = ({ gameId: id }: Props) => {
   const { data, error } = useStore(id);
   const { colorMode } = useColorMode();
   if (error) return;
-  var color = colorMode === "dark" ? "gray.400" : "black.900";
+  if (data?.count === 0) return;
+  var color = colorMode === "dark" ? "gray.400" : "gray.500";
   return (
     <>
       <Text

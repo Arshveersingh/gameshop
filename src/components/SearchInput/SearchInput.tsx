@@ -1,7 +1,14 @@
-import { Input, InputGroup, InputRightElement, Kbd } from "@chakra-ui/react";
+import {
+  Input,
+  InputGroup,
+  InputRightElement,
+  Kbd,
+  Box,
+} from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import useGameQueryStore from "../../stores/GameQueryStore";
+import { FaSearch } from "react-icons/fa";
 import styles from "./SearchInput.module.css";
 
 export const SearchInput = () => {
@@ -24,29 +31,34 @@ export const SearchInput = () => {
   }, []);
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        setSearchText(ref.current?.value || "");
-        ref.current!.value = "";
-        navigate("/");
-      }}
-    >
-      <InputGroup className={styles.searchBar}>
-        <Input
-          borderRadius={20}
-          placeholder="Search games..."
-          variant="filled"
-          ref={ref}
-        ></Input>
-        <InputRightElement
-          children={
-            <span className={styles.hotKeys}>
-              <Kbd>ctrl</Kbd> + <Kbd>K</Kbd>
-            </span>
-          }
-        ></InputRightElement>
-      </InputGroup>
-    </form>
+    <>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          setSearchText(ref.current?.value || "");
+          ref.current!.value = "";
+          navigate("/");
+        }}
+      >
+        <InputGroup className={styles.searchBar}>
+          <Input
+            borderRadius={20}
+            placeholder="Search games..."
+            variant="filled"
+            ref={ref}
+          ></Input>
+
+          <InputRightElement
+            children={
+              <>
+                <Box paddingRight={"4rem"} className={styles.hotKeys}>
+                  <Kbd>ctrl</Kbd> + <Kbd>K</Kbd>
+                </Box>
+              </>
+            }
+          ></InputRightElement>
+        </InputGroup>
+      </form>
+    </>
   );
 };

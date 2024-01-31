@@ -15,7 +15,7 @@ export const PlatformSelector = () => {
   }
 
   return (
-    <Menu>
+    <Menu colorScheme={"red"}>
       <MenuButton as={Button} rightIcon={<FaChevronDown />}>
         {selectedPlatform?.name || "Platforms"}
       </MenuButton>
