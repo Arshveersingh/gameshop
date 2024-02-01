@@ -1,11 +1,12 @@
 import {
+  Button,
   Input,
   InputGroup,
-  InputRightElement,
-  Kbd,
-  Box,
+  InputRightAddon,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
+import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import useGameQueryStore from "../../stores/GameQueryStore";
 import styles from "./SearchInput.module.css";
@@ -28,6 +29,8 @@ export const SearchInput = () => {
       document.removeEventListener("keydown", searchBarHotKeyHandler);
     };
   }, []);
+  const backgroundColor = useColorModeValue("#87CEFA", "#2D3436");
+  const searchButtonColor = useColorModeValue("#5cc2ed", "#333333");
 
   return (
     <>
@@ -41,21 +44,32 @@ export const SearchInput = () => {
       >
         <InputGroup className={styles.searchBar}>
           <Input
+            focusBorderColor="none"
             borderRadius={20}
             placeholder="Search games..."
             variant="filled"
             ref={ref}
+            _focus={{
+              background: backgroundColor,
+              transition: "background 200ms ease-in",
+            }}
           ></Input>
 
-          <InputRightElement
-            children={
-              <>
-                <Box paddingRight={"4rem"} className={styles.hotKeys}>
-                  <Kbd>ctrl</Kbd> + <Kbd>K</Kbd>
-                </Box>
-              </>
-            }
-          ></InputRightElement>
+          <InputRightAddon
+            padding={0}
+            margin={0}
+            borderRadius={"0 20px 20px 0"}
+          >
+            <Button
+              paddingX={"2rem"}
+              _focus={{ outline: "none" }}
+              borderRadius={"inherit"}
+              backgroundColor={searchButtonColor}
+              type="submit"
+            >
+              <FaSearch></FaSearch>
+            </Button>
+          </InputRightAddon>
         </InputGroup>
       </form>
     </>
