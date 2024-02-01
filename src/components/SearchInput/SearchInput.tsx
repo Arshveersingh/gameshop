@@ -8,7 +8,6 @@ import {
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import useGameQueryStore from "../../stores/GameQueryStore";
-import { FaSearch } from "react-icons/fa";
 import styles from "./SearchInput.module.css";
 
 export const SearchInput = () => {

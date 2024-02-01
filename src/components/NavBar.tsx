@@ -30,9 +30,7 @@ export const NavBar = () => {
         <Image objectFit="cover" src={logo} boxSize="60px"></Image>
       </Link>
       <SearchInput></SearchInput>
-      <Show above="md">
-        <ColorModeSwitch></ColorModeSwitch>
-      </Show>
+      <ColorModeSwitch></ColorModeSwitch>
     </HStack>
   );
 };

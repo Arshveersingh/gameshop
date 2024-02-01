@@ -1,4 +1,4 @@
-import { Box, Image, useColorModeValue } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { FreeMode, Keyboard, Navigation, Thumbs } from "swiper/modules";
