@@ -1,0 +1,10 @@
+@media screen and (max-width: 390px) {
+  .navBar {
+    flex-wrap: wrap;
+  }
+  .navBar :nth-child(2) {
+    order: 1;
+    margin: auto;
+    flex-grow: 1;
+  }
+}

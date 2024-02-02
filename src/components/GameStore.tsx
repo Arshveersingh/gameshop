@@ -60,7 +60,7 @@ export const GameStores = ({ gameId: id }: Props) => {
               color={color}
               background={"transparent"}
             >
-              <Text fontSize={"1.5rem"}>
+              <Text fontSize={"1.2rem"}>
                 {iconMap[store.store_id].storeName}
               </Text>
               <Icon

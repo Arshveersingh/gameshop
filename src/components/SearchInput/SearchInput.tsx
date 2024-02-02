@@ -66,6 +66,7 @@ export const SearchInput = () => {
               borderRadius={"inherit"}
               backgroundColor={searchButtonColor}
               type="submit"
+              className={styles.searchButton}
             >
               <FaSearch></FaSearch>
             </Button>
