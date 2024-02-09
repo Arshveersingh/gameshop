@@ -1,10 +1,12 @@
 import { HStack, Image } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/gameshop.webp";
+import getDateStr from "../../services/date";
+import useGameQueryStore from "../../stores/GameQueryStore";
 import { ColorModeSwitch } from "../ColorModeSwitch";
 import { SearchInput } from "../SearchInput/SearchInput";
-import { Link, useNavigate } from "react-router-dom";
-import useGameQueryStore from "../../stores/GameQueryStore";
 import styles from "./NavBar.module.css";
+
 export const NavBar = () => {
   const navigate = useNavigate();
   const { setGenreId, setPlatformId, setSearchText, setSortOrder, setDates } =
@@ -14,9 +16,8 @@ export const NavBar = () => {
     setPlatformId(0);
     setSearchText("");
     setSortOrder("");
-
     navigate("/");
-    setDates("");
+    setDates(getDateStr());
   };
 
   return (

@@ -3,8 +3,9 @@ import ms from "ms";
 import APIClient, { FetchResponse } from "../services/api-client";
 import useGameQueryStore from "../stores/GameQueryStore";
 import Game from "../entities/Game";
+import getDateStr from "../services/date";
 
-const apiClient = new APIClient<Game>("/games?ordering");
+const apiClient = new APIClient<Game>(`/games?dates=${getDateStr()}`);
 
 const useGames = () => {
   const gameQuery = useGameQueryStore((s) => s.gameQuery);

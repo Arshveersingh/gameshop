@@ -13,7 +13,7 @@ import styles from "./SearchInput.module.css";
 
 export const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
-  const setSearchText = useGameQueryStore((s) => s.setSearchText);
+  const gameQuery = useGameQueryStore();
   const navigate = useNavigate();
   useEffect(() => {
     const searchBarHotKeyHandler = (event: KeyboardEvent) => {
@@ -37,7 +37,9 @@ export const SearchInput = () => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          setSearchText(ref.current?.value || "");
+          gameQuery.setSearchText(ref.current?.value || "");
+          gameQuery.setDates("");
+          gameQuery.setSortOrder("");
           ref.current!.value = "";
           navigate("/");
         }}

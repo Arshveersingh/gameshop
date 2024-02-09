@@ -7,7 +7,9 @@ interface Props {
 
 export const GameRating = ({ rating }: Props) => {
   const ratingStr = rating.toFixed(1);
-
+  if (rating === 0) {
+    return;
+  }
   return (
     <Box
       display="flex"
