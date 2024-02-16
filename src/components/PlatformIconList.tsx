@@ -9,7 +9,7 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
-import { HStack, Icon } from "@chakra-ui/react";
+import { HStack, Icon, useColorModeValue } from "@chakra-ui/react";
 import Platform from "../entities/Platform";
 import { IconType } from "react-icons";
 
@@ -28,11 +28,17 @@ export const PlatformIconList = ({ platforms }: Props) => {
     web: BsGlobe,
     android: FaAndroid,
   };
+  const iconColor = useColorModeValue("gray.500", "white");
   return (
     <>
       <HStack marginY={1}>
         {platforms?.map((platform, index) => (
-          <Icon as={iconMap[platform.slug]} key={index} color="gray.500"></Icon>
+          <Icon
+            boxSize={"1.3rem"}
+            as={iconMap[platform.slug]}
+            key={index}
+            color={iconColor}
+          ></Icon>
         ))}
       </HStack>
     </>

@@ -1,6 +1,7 @@
 import { Box, useColorModeValue } from "@chakra-ui/react";
 
 import styles from "./BackgroundImage.module.css";
+import getCroppedImages from "../../services/image-url";
 
 interface Props {
   imgUrl: string;
@@ -12,7 +13,9 @@ export const BackgroundImage = ({ imgUrl }: Props) => {
     <Box className={styles.backgroundImageContainer} opacity={opacity}>
       <Box
         className={styles.backgroundImage}
-        backgroundImage={`url("${imgUrl}");`}
+        backgroundImage={`url("${imgUrl}"); url("${getCroppedImages(
+          imgUrl
+        )}") var(--fallback); `}
       ></Box>
     </Box>
   );

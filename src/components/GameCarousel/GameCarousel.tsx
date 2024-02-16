@@ -5,6 +5,7 @@ import { FreeMode, Keyboard, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useScreenshots from "../../hooks/useScreenshots";
 import useTrailers from "../../hooks/useTrailers";
+import getCroppedImages from "../../services/image-url";
 import styles from "./GameCarousel.module.css";
 
 import "swiper/css";
@@ -91,6 +92,7 @@ export const GameCarousel = ({ gameId }: Props) => {
                     : styles.thumbnail
                 }
                 src={trailer.preview}
+                fallbackSrc={getCroppedImages(trailer.preview)}
               ></Image>
               <FaRegCirclePlay
                 size={40}
@@ -107,7 +109,7 @@ export const GameCarousel = ({ gameId }: Props) => {
                     ? styles.activeSlide
                     : styles.thumbnail
                 }
-                src={screenshot.image}
+                src={getCroppedImages(screenshot.image)}
               ></Image>
             </SwiperSlide>
           ))}
