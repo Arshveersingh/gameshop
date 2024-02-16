@@ -1,8 +1,14 @@
-import { Box, Image } from "@chakra-ui/react";
+import { Box, Button, Image } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { FreeMode, Keyboard, Navigation, Thumbs } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import {
+  IoIosArrowDropright,
+  IoIosArrowDropleft,
+  IoIosArrowBack,
+  IoIosArrowForward,
+} from "react-icons/io";
 import useScreenshots from "../../hooks/useScreenshots";
 import useTrailers from "../../hooks/useTrailers";
 import getCroppedImages from "../../services/image-url";
@@ -20,6 +26,7 @@ interface Props {
 }
 
 export const GameCarousel = ({ gameId }: Props) => {
+  const swiper = useSwiper();
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [swiperActiveIndex, setSwiperActiveIndex] = useState(0);
   const { data: trailers } = useTrailers(gameId);
@@ -29,7 +36,7 @@ export const GameCarousel = ({ gameId }: Props) => {
   if (error) throw error;
 
   return (
-    <Box marginBottom={5}>
+    <Box marginBottom={5} position={"relative"}>
       <Swiper
         onSlideChange={(swiper) => {
           let videoElements = document.getElementsByTagName("video");
@@ -40,7 +47,10 @@ export const GameCarousel = ({ gameId }: Props) => {
         }}
         loop={false}
         spaceBetween={50}
-        navigation={true}
+        navigation={{
+          nextEl: ".nextButton",
+          prevEl: ".prevButton",
+        }}
         keyboard={true}
         slidesPerView={1}
         modules={[Thumbs, FreeMode, Navigation, Keyboard]}
@@ -49,14 +59,40 @@ export const GameCarousel = ({ gameId }: Props) => {
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
       >
+        <Button
+          className="prevButton"
+          left={"12%"}
+          onClick={() => swiper.slidePrev()}
+          padding={0}
+          position={"absolute"}
+          top={"50%"}
+          transform={"translateY(-50%);"}
+          variant={"none"}
+          zIndex={100}
+        >
+          <IoIosArrowDropleft size={"3rem"}></IoIosArrowDropleft>
+        </Button>
+        <Button
+          className="nextButton"
+          onClick={() => swiper.slideNext()}
+          padding={0}
+          position={"absolute"}
+          right={"12%"}
+          top={"50%"}
+          transform={"translateY(-50%);"}
+          variant={"none"}
+          zIndex={100}
+        >
+          <IoIosArrowDropright size={"3rem"}></IoIosArrowDropright>
+        </Button>
         {trailers?.results.map((trailer) => (
           <SwiperSlide key={trailer.id}>
             <video
               className={styles.slide}
-              src={trailer.data[480]}
               controls
-              width="80%"
               poster={trailer.preview}
+              src={trailer.data[480]}
+              width="80%"
             ></video>
           </SwiperSlide>
         ))}
@@ -73,15 +109,54 @@ export const GameCarousel = ({ gameId }: Props) => {
 
       <Box>
         <Swiper
-          modules={[Thumbs, FreeMode, Navigation]}
           className={styles.thumbnailsContainer}
+          modules={[Thumbs, FreeMode, Navigation]}
           // @ts-ignore
           onSwiper={setThumbsSwiper}
-          watchSlidesProgress
           slidesPerView={4}
           spaceBetween={20}
-          navigation={true}
+          watchSlidesProgress
+          navigation={{
+            nextEl: ".nextButtonThumb",
+            prevEl: ".prevButtonThumb",
+          }}
         >
+          <Button
+            className="prevButtonThumb"
+            left={"10px"}
+            onClick={() => {
+              if (thumbsSwiper) {
+                //@ts-ignore
+                thumbsSwiper.slidePrev();
+              }
+            }}
+            padding={0}
+            position={"absolute"}
+            top={"50%"}
+            transform={"translateY(-50%);"}
+            variant={"none"}
+            zIndex={100}
+          >
+            <IoIosArrowBack size={"2rem"}></IoIosArrowBack>
+          </Button>
+          <Button
+            className="nextButtonThumb"
+            onClick={() => {
+              if (thumbsSwiper) {
+                //@ts-ignore
+                thumbsSwiper.slideNext();
+              }
+            }}
+            padding={0}
+            position={"absolute"}
+            right={"10px"}
+            top={"50%"}
+            transform={"translateY(-50%);"}
+            variant={"none"}
+            zIndex={100}
+          >
+            <IoIosArrowForward size={"2rem"}></IoIosArrowForward>
+          </Button>
           {trailers?.results.map((trailer, i) => (
             <SwiperSlide className={styles.videoThumbnail} key={trailer.id}>
               <Image
