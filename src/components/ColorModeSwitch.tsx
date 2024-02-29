@@ -10,7 +10,7 @@ export const ColorModeSwitch = () => {
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
         colorScheme="purple"
-        
+        aria-label="color mode switch"
       ></Switch>
       <FaMoon size={"1.6rem"} color={"#580D8C"}></FaMoon>
     </HStack>

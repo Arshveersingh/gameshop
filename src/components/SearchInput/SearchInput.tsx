@@ -63,6 +63,7 @@ export const SearchInput = () => {
             borderRadius={"0 20px 20px 0"}
           >
             <Button
+              aria-label="Search Button"
               paddingX={"2rem"}
               _focus={{ outline: "none" }}
               borderRadius={"inherit"}

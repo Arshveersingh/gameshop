@@ -29,7 +29,12 @@ export const NavBar = () => {
       className={styles.navBar}
     >
       <Link to="/" onClick={handleClick}>
-        <Image objectFit="cover" src={logo} boxSize="60px"></Image>
+        <Image
+          objectFit="cover"
+          src={logo}
+          boxSize="60px"
+          alt="gameshop logo"
+        ></Image>
       </Link>
       <SearchInput></SearchInput>
       <ColorModeSwitch></ColorModeSwitch>
