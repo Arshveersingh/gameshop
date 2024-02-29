@@ -40,26 +40,29 @@ export const GameCard = ({ game }: Props) => {
           src={getCroppedImages(game.background_image)}
         ></Image>
       </Link>
-      <CardBody>
-        <HStack justifyContent={"space-between"} marginBottom={3}>
+      <CardBody paddingY={2} paddingX={3}>
+        <HStack justifyContent={"space-between"} marginBottom={2}>
           <PlatformIconList
             platforms={game.parent_platforms?.map((p) => p.platform)}
           ></PlatformIconList>
           <CriticScore score={game.metacritic}></CriticScore>
         </HStack>
         <Heading
-          fontSize={"2xl"}
+          fontSize={"xl"}
           fontFamily="'Bebas Neue', 'Roboto', 'Sans-Serif';"
+          display="flex"
+          justifyContent="space-between"
+          alignItems={"center"}
         >
           <Link to={`/games/${game.slug}`}>
-            <Text fontWeight={1} letterSpacing={2}>
+            <Text noOfLines={1} fontWeight={1} letterSpacing={2}>
               {game.name}
             </Text>
           </Link>
+          <Emoji
+            rating={checkReleaseDate(game.released) ? game.rating : -1}
+          ></Emoji>
         </Heading>
-        <Emoji
-          rating={checkReleaseDate(game.released) ? game.rating : -1}
-        ></Emoji>
       </CardBody>
     </Card>
   );
