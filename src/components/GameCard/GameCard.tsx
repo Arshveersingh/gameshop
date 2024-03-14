@@ -4,9 +4,11 @@ import {
   HStack,
   Heading,
   Image,
+  Skeleton,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Game from "../../entities/Game";
 import getCroppedImages from "../../services/image-url";
@@ -14,11 +16,6 @@ import { CriticScore } from "../CriticScore";
 import { Emoji } from "../Emoji";
 import { PlatformIconList } from "../PlatformIconList";
 import styles from "./GameCard.module.css";
-
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/effect-fade";
-import "swiper/css/pagination";
 
 interface Props {
   game: Game;
@@ -29,16 +26,20 @@ const checkReleaseDate = (releaseDate: string) => {
 };
 
 export const GameCard = ({ game }: Props) => {
+  const [imageLoading, setImageLoading] = useState(true);
   const backgroundColor = useColorModeValue("whitesmoke", "gray.700");
 
   return (
     <Card background={backgroundColor}>
       <Link to={`/games/${game.slug}`}>
-        <Image
-          width={"100%"}
-          className={styles.gameCardImage}
-          src={getCroppedImages(game.background_image)}
-        ></Image>
+        <Skeleton height={imageLoading ? "200px" : ""} isLoaded={!imageLoading}>
+          <Image
+            width={"100%"}
+            className={styles.gameCardImage}
+            src={getCroppedImages(game.background_image)}
+            onLoad={() => setImageLoading(false)}
+          ></Image>
+        </Skeleton>
       </Link>
       <CardBody paddingY={2} paddingX={3}>
         <HStack justifyContent={"space-between"} marginBottom={2}>
