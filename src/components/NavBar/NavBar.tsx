@@ -9,6 +9,7 @@ import styles from "./NavBar.module.css";
 
 export const NavBar = () => {
   const navigate = useNavigate();
+
   const { setGenreId, setPlatformId, setSearchText, setSortOrder, setDates } =
     useGameQueryStore();
   const handleClick = () => {

@@ -7,14 +7,14 @@ import GameCarousel from "../components/GameCarousel/GameCarousel";
 import { GameRating } from "../components/GameRating";
 import { GameRequirements } from "../components/GameRequirements";
 import { GameStores } from "../components/GameStore";
-import { LoadingText } from "../components/LoadingText/LoadingText";
+import { LoadingAnimation } from "../components/LoadingText";
 import useGame from "../hooks/useGame";
 
 export const GameDetailPage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { data: game, isLoading, error } = useGame(slug!);
-  if (isLoading) return <LoadingText></LoadingText>;
+  if (isLoading) return <LoadingAnimation></LoadingAnimation>;
   if (error || !game) throw error;
   return (
     <>

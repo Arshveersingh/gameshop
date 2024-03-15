@@ -18,7 +18,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useParams } from "react-router-dom";
 import useAchievements from "../hooks/useAchievements";
 import useGame from "../hooks/useGame";
-import { LoadingText } from "../components/LoadingText/LoadingText";
+import { LoadingAnimation } from "../components/LoadingText";
 
 export const GameAchievementPage = () => {
   const { slug } = useParams();
@@ -40,7 +40,7 @@ export const GameAchievementPage = () => {
   const color = useColorModeValue("black.900", "black.400");
   if (error) return <Text>{error.message}</Text>;
   if (isLoadingGames || isLoadingAchievements)
-    return <LoadingText></LoadingText>;
+    return <LoadingAnimation></LoadingAnimation>;
   if (!game) return;
   return (
     <InfiniteScroll
