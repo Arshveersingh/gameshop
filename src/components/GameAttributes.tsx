@@ -36,29 +36,29 @@ export const GameAttributes = ({ game }: Props) => {
 
   return (
     <>
+      <Heading
+        width={"lg"}
+        display={"block"}
+        margin={"auto"}
+        marginTop={"2rem"}
+        textAlign={"center"}
+      >
+        Platforms
+      </Heading>
       <Flex
-        flexWrap={"wrap"}
         gap={"1rem"}
         margin={"1rem auto"}
         marginBottom={"3rem"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        maxWidth={"70vw"}
+        placeContent={"center"}
+        maxWidth={"80vw"}
       >
-        <Heading
-          width={"2xl"}
-          display={"block"}
-          margin={"auto"}
-          marginTop={"2rem"}
-          textAlign={"center"}
-        >
-          Platforms
-        </Heading>
         {game.parent_platforms?.map(({ platform }) => (
           <Image
-            height={"4rem"}
             key={platform.id}
+            justifySelf="center"
+            height={"3rem"}
             src={imgMap[platform.slug]}
+            fill={"green"}
           ></Image>
         ))}
       </Flex>
