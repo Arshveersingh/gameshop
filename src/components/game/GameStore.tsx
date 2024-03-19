@@ -9,7 +9,7 @@ import {
   FaXbox,
 } from "react-icons/fa6";
 import { SiEpicgames, SiGogdotcom, SiNintendo } from "react-icons/si";
-import useStore from "../hooks/useStore";
+import useStore from "../../hooks/useStore";
 
 interface Props {
   gameId: number;

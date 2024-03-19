@@ -1,10 +1,10 @@
 import { HStack, Image } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/gameshop.webp";
-import getDateStr from "../../services/date";
-import useGameQueryStore from "../../stores/GameQueryStore";
-import { ColorModeSwitch } from "../ColorModeSwitch";
-import { SearchInput } from "../SearchInput/SearchInput";
+import getDateStr from "../../../services/date";
+import useGameQueryStore from "../../../stores/GameQueryStore";
+import logo from "../../../assets/gameshop.webp";
+import { ColorModeSwitch } from "../../common/ColorModeSwitch";
+import { SearchInput } from "../../common/SearchInput/SearchInput";
 import styles from "./NavBar.module.css";
 
 export const NavBar = () => {

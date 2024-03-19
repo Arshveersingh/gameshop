@@ -1,7 +1,7 @@
 import { Heading } from "@chakra-ui/react";
-import useGenre from "../hooks/useGenre";
-import usePlatform from "../hooks/usePlatform";
-import useGameQueryStore from "../stores/GameQueryStore";
+import useGenre from "../../hooks/useGenre";
+import usePlatform from "../../hooks/usePlatform";
+import useGameQueryStore from "../../stores/GameQueryStore";
 
 const convertToTitleCase = (str: string) => {
   if (!str) return "";

@@ -18,7 +18,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useParams } from "react-router-dom";
 import useAchievements from "../hooks/useAchievements";
 import useGame from "../hooks/useGame";
-import { LoadingAnimation } from "../components/LoadingText";
+import { LoadingAnimation } from "../components/common/LoadingText";
 
 export const GameAchievementPage = () => {
   const { slug } = useParams();

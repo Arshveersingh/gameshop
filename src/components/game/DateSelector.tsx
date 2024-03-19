@@ -1,7 +1,7 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa6";
-import useGameQueryStore from "../stores/GameQueryStore";
+import useGameQueryStore from "../../stores/GameQueryStore";
 
 // returns string YYYY-MM-DD,YYYY-MM-DD for querying server
 // second date should be older

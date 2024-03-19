@@ -7,9 +7,9 @@ import {
   ListItem,
   Spinner,
 } from "@chakra-ui/react";
-import useGenres from "../hooks/useGenres";
-import getCroppedImages from "../services/image-url";
-import useGameQueryStore from "../stores/GameQueryStore";
+import useGenres from "../../hooks/useGenres";
+import getCroppedImages from "../../services/image-url";
+import useGameQueryStore from "../../stores/GameQueryStore";
 
 export const GenreList = () => {
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);

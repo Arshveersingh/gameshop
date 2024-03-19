@@ -1,13 +1,13 @@
 import { Box, Button, Heading } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
-import { BackgroundImage } from "../components/BackGroundImage/BackgroundImage";
-import { ExpandableText } from "../components/ExpandableText";
-import { GameAttributes } from "../components/GameAttributes";
-import GameCarousel from "../components/GameCarousel/GameCarousel";
-import { GameRating } from "../components/GameRating";
-import { GameRequirements } from "../components/GameRequirements";
-import { GameStores } from "../components/GameStore";
-import { LoadingAnimation } from "../components/LoadingText";
+import { BackgroundImage } from "../components/game/BackGroundImage/BackgroundImage";
+import { ExpandableText } from "../components/common/ExpandableText";
+import { GameAttributes } from "../components/game/GameAttributes";
+import GameCarousel from "../components/game/GameCarousel/GameCarousel";
+import { GameRating } from "../components/game/GameRating";
+import { GameRequirements } from "../components/game/GameRequirements";
+import { GameStores } from "../components/game/GameStore";
+import { LoadingAnimation } from "../components/common/LoadingText";
 import useGame from "../hooks/useGame";
 
 export const GameDetailPage = () => {

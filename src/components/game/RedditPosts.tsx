@@ -10,7 +10,7 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import noImage from "../assets/no-image-placeholder.webp";
-import useRedditPosts from "../hooks/useRedditPosts";
+import useRedditPosts from "../../hooks/useRedditPosts";
 
 interface Props {
   gameId: number;

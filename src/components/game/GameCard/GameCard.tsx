@@ -10,10 +10,10 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Game from "../../entities/Game";
-import getCroppedImages from "../../services/image-url";
+import Game from "../../../entities/Game";
+import getCroppedImages from "../../../services/image-url";
 import { CriticScore } from "../CriticScore";
-import { Emoji } from "../Emoji";
+import { Emoji } from "../../common/Emoji";
 import { PlatformIconList } from "../PlatformIconList";
 import styles from "./GameCard.module.css";
 

@@ -10,7 +10,7 @@ import {
   TabPanels,
   TabPanel,
 } from "@chakra-ui/react";
-import Game from "../entities/Game";
+import Game from "../../entities/Game";
 
 interface Props {
   game: Game;

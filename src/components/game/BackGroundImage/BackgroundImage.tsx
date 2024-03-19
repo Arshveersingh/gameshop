@@ -1,7 +1,7 @@
 import { Box, useColorModeValue } from "@chakra-ui/react";
 
 import styles from "./BackgroundImage.module.css";
-import getCroppedImages from "../../services/image-url";
+import getCroppedImages from "../../../services/image-url";
 
 interface Props {
   imgUrl: string;

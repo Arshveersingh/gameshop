@@ -1,5 +1,5 @@
 import { SwiperSlide } from "swiper/react";
-import useTrailers from "../hooks/useTrailers";
+import useTrailers from "../../hooks/useTrailers";
 
 interface Props {
   gameId: number;

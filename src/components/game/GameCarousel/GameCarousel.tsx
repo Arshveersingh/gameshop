@@ -9,9 +9,9 @@ import {
   IoIosArrowBack,
   IoIosArrowForward,
 } from "react-icons/io";
-import useScreenshots from "../../hooks/useScreenshots";
-import useTrailers from "../../hooks/useTrailers";
-import getCroppedImages from "../../services/image-url";
+import useScreenshots from "../../../hooks/useScreenshots";
+import useTrailers from "../../../hooks/useTrailers";
+import getCroppedImages from "../../../services/image-url";
 import styles from "./GameCarousel.module.css";
 
 import "swiper/css";
