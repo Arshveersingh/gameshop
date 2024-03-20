@@ -25,6 +25,11 @@ export const GameHeading = () => {
       marginY={4}
       marginTop={0}
       fontSize={{ base: "2.3rem", sm: "1.5rem", md: "2.5rem", lg: "3rem" }}
+      color={"transparent"}
+      backgroundClip={"text"}
+      backgroundImage={
+        "linear-gradient(0deg, rgba(131,58,180,1) 34%, rgba(233,67,67,1) 81%);"
+      }
     >
       {heading}
     </Heading>

@@ -20,7 +20,15 @@ export const GenreList = () => {
   if (isLoading)
     return (
       <>
-        <Heading marginBottom={3} fontSize={"3xl"}>
+        <Heading
+          marginBottom={3}
+          fontSize={"3xl"}
+          color={"transparet"}
+          background={
+            "linear-gradient(0deg, rgba(63,94,251,1) 39%, rgba(131,58,180,1) 73%);"
+          }
+          backgroundClip={"text"}
+        >
           Genres
         </Heading>
         <Spinner
@@ -34,7 +42,15 @@ export const GenreList = () => {
     );
   return (
     <>
-      <Heading marginBottom={3} fontSize={"3xl"}>
+      <Heading
+        marginBottom={3}
+        fontSize={"3xl"}
+        color={"transparet"}
+        background={
+          "linear-gradient(0deg, rgba(63,94,251,1) 39%, rgba(131,58,180,1) 73%);"
+        }
+        backgroundClip={"text"}
+      >
         Genres
       </Heading>
       <List>
@@ -54,9 +70,14 @@ export const GenreList = () => {
                   }}
                   variant="link"
                   fontSize="lg"
-                  fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                   whiteSpace="normal"
                   textAlign="left"
+                  fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
+                  background={
+                    "linear-gradient(0deg, rgba(63,94,251,1) 39%, rgba(131,58,180,1) 73%);"
+                  }
+                  backgroundClip={"text"}
+                  color={genre.id === selectedGenreId ? "transparent" : ""}
                 >
                   {genre.name}
                 </Button>

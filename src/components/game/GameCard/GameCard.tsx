@@ -27,10 +27,16 @@ const checkReleaseDate = (releaseDate: string) => {
 
 export const GameCard = ({ game }: Props) => {
   const [imageLoading, setImageLoading] = useState(true);
+  const [isMouseOver, setIsMouseOver] = useState(false);
+
   const backgroundColor = useColorModeValue("whitesmoke", "gray.700");
 
   return (
-    <Card background={backgroundColor}>
+    <Card
+      background={backgroundColor}
+      onMouseEnter={() => setIsMouseOver(true)}
+      onMouseLeave={() => setIsMouseOver(false)}
+    >
       <Link to={`/games/${game.slug}`}>
         <Skeleton height={imageLoading ? "200px" : ""} isLoaded={!imageLoading}>
           <Image
@@ -56,7 +62,16 @@ export const GameCard = ({ game }: Props) => {
           alignItems={"center"}
         >
           <Link to={`/games/${game.slug}`}>
-            <Text noOfLines={1} fontWeight={1} letterSpacing={2}>
+            <Text
+              background={
+                "linear-gradient(0deg, rgba(255,204,51,1) 34%, rgba(255,153,0,1) 81%);"
+              }
+              backgroundClip={"text"}
+              color={isMouseOver ? "transparent" : ""}
+              noOfLines={1}
+              fontWeight={1}
+              letterSpacing={2}
+            >
               {game.name}
             </Text>
           </Link>

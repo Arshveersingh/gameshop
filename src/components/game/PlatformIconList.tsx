@@ -17,6 +17,7 @@ interface Props {
   platforms: Platform[];
 }
 export const PlatformIconList = ({ platforms }: Props) => {
+  const iconColor = useColorModeValue("gray.500", "white");
   const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
     playstation: FaPlaystation,
@@ -28,7 +29,7 @@ export const PlatformIconList = ({ platforms }: Props) => {
     web: BsGlobe,
     android: FaAndroid,
   };
-  const iconColor = useColorModeValue("gray.500", "white");
+
   return (
     <>
       <HStack marginY={1}>
