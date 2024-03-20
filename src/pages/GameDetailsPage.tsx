@@ -1,4 +1,4 @@
-import { Box, Button, Heading } from "@chakra-ui/react";
+import { Box, Button, Heading, Text } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BackgroundImage } from "../components/game/BackGroundImage/BackgroundImage";
 import { ExpandableText } from "../components/common/ExpandableText";
@@ -31,19 +31,19 @@ export const GameDetailPage = () => {
         </Heading>
         <GameRating rating={game.rating}></GameRating>
       </Box>
-
       <GameCarousel gameId={game.id}></GameCarousel>
-      <ExpandableText
-        fontFamily="'Ubuntu Mono', 'Courier New', 'Monospace';"
-        maxChars={300}
+      <Text
+        fontFamily=" 'Hepta Slab', 'Ubuntu Mono', 'Courier New', 'Monospace';"
+        letterSpacing={0.6}
+        lineHeight={2}
       >
-        {game.description_raw}
-      </ExpandableText>
+        <div dangerouslySetInnerHTML={{ __html: game.description }}></div>
+      </Text>
       <GameAttributes game={game}></GameAttributes>
       <GameStores gameId={game.id}></GameStores>
 
       <GameRequirements game={game}></GameRequirements>
-      {/* <AchievementList game={game}></AchievementList> */}
+
       <Button
         onClick={() => navigate(`/games/${game.id}/achievements`)}
         display={"block"}

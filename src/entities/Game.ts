@@ -22,5 +22,6 @@ interface Game {
   rating: number;
   esrb_rating: ESRB;
   description_raw: string;
+  description: string;
 }
 export default Game;
