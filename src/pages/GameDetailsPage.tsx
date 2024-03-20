@@ -1,21 +1,26 @@
 import { Box, Button, Heading, Text } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BackgroundImage } from "../components/game/BackGroundImage/BackgroundImage";
-import { ExpandableText } from "../components/common/ExpandableText";
 import { GameAttributes } from "../components/game/GameAttributes";
 import GameCarousel from "../components/game/GameCarousel/GameCarousel";
 import { GameRating } from "../components/game/GameRating";
 import { GameRequirements } from "../components/game/GameRequirements";
 import { GameStores } from "../components/game/GameStore";
-import { LoadingAnimation } from "../components/common/LoadingText";
+import { LoadingAnimation } from "../components/common/LoadingAnimation";
 import useGame from "../hooks/useGame";
+import { useEffect } from "react";
 
 export const GameDetailPage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { data: game, isLoading, error } = useGame(slug!);
   if (isLoading) return <LoadingAnimation></LoadingAnimation>;
   if (error || !game) throw error;
+
   return (
     <>
       <BackgroundImage imgUrl={game.background_image}></BackgroundImage>

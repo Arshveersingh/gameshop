@@ -4,7 +4,12 @@ import loadingAnimation from "../../animations/loadingAnimation.json";
 
 export const LoadingAnimation = () => {
   return (
-    <Box display={"flex"} justifyContent={"center"}>
+    <Box
+      position={"fixed"}
+      top={"50%"}
+      left={"50%"}
+      transform={"translate(-50%, -50%)"}
+    >
       <Lottie
         animationData={loadingAnimation}
         loop
