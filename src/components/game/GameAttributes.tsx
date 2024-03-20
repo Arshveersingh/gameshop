@@ -1,39 +1,20 @@
 import {
+  Box,
   Flex,
   GridItem,
   Heading,
-  Image,
   SimpleGrid,
   Text,
-  Box,
 } from "@chakra-ui/react";
-import iosSVG from "../../assets/apple-ios.svg";
-import linuxSVG from "../../assets/linux-tux.svg";
-import androidSVG from "../../assets/logo-android.svg";
-import macbookSVG from "../../assets/mac-os-2.svg";
-import nintendoSVG from "../../assets/nintendo-2.svg";
-import playstationSVG from "../../assets/playstation-logo-and-wordmark.svg";
-import windowsSVG from "../../assets/windows-darkblue-2012-svg.svg";
-import xboxSVG from "../../assets/xbox-9.svg";
 import Game from "../../entities/Game";
 import { CriticScore } from "./CriticScore";
+import { PlatformIconList } from "./PlatformIconList";
 
 interface Props {
   game: Game;
 }
 
 export const GameAttributes = ({ game }: Props) => {
-  const imgMap: { [key: string]: string } = {
-    pc: windowsSVG,
-    playstation: playstationSVG,
-    xbox: xboxSVG,
-    nintendo: nintendoSVG,
-    mac: macbookSVG,
-    linux: linuxSVG,
-    ios: iosSVG,
-    android: androidSVG,
-  };
-
   return (
     <>
       <Heading
@@ -52,16 +33,13 @@ export const GameAttributes = ({ game }: Props) => {
         placeContent={"center"}
         maxWidth={"80vw"}
       >
-        {game.parent_platforms?.map(({ platform }) => (
-          <Image
-            key={platform.id}
-            justifySelf="center"
-            height={"3rem"}
-            src={imgMap[platform.slug]}
-            fill={"green"}
-          ></Image>
-        ))}
+        <PlatformIconList
+          boxSize={"2.6rem"}
+          gap="3rem"
+          platforms={game.parent_platforms?.map((p) => p.platform)}
+        ></PlatformIconList>
       </Flex>
+
       <SimpleGrid
         borderTop={"1px solid rgb(75, 78, 83)"}
         templateColumns={"1fr 1fr"}

@@ -14,9 +14,15 @@ import Platform from "../../entities/Platform";
 import { IconType } from "react-icons";
 
 interface Props {
+  boxSize?: string | number;
+  gap?: string | number;
   platforms: Platform[];
 }
-export const PlatformIconList = ({ platforms }: Props) => {
+export const PlatformIconList = ({
+  platforms,
+  boxSize = "1.3rem",
+  gap = "0.5rem",
+}: Props) => {
   const iconColor = useColorModeValue("gray.500", "white");
   const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
@@ -32,10 +38,10 @@ export const PlatformIconList = ({ platforms }: Props) => {
 
   return (
     <>
-      <HStack marginY={1}>
+      <HStack marginY={1} gap={gap}>
         {platforms?.map((platform, index) => (
           <Icon
-            boxSize={"1.3rem"}
+            boxSize={boxSize}
             as={iconMap[platform.slug]}
             key={index}
             color={iconColor}
