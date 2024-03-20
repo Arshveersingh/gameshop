@@ -37,13 +37,13 @@ export const GameDetailPage = () => {
         <GameRating rating={game.rating}></GameRating>
       </Box>
       <GameCarousel gameId={game.id}></GameCarousel>
-      <Text
+      <Box
         fontFamily=" 'Hepta Slab', 'Ubuntu Mono', 'Courier New', 'Monospace';"
         letterSpacing={0.6}
         lineHeight={2}
       >
         <div dangerouslySetInnerHTML={{ __html: game.description }}></div>
-      </Text>
+      </Box>
       <GameAttributes game={game}></GameAttributes>
       <GameStores gameId={game.id}></GameStores>
 

@@ -50,6 +50,7 @@ export const GameRequirements = ({ game }: Props) => {
               <TabPanel
                 fontFamily={"'Roboto', 'Monospace';"}
                 lineHeight={"2.5rem"}
+                key={"tabpanel_" + platform.id}
               >
                 <SimpleGrid
                   templateColumns={{ base: "1fr", md: "1fr 1fr" }}
@@ -67,11 +68,11 @@ export const GameRequirements = ({ game }: Props) => {
                         Minimum
                       </Text>
                     )}
-                    {minimumReq?.split("\n").map((text) => {
+                    {minimumReq?.split("\n").map((text, index) => {
                       if (text.includes(":")) {
                         const textArray = text.split(":", 2);
                         return (
-                          <Box fontSize={"xl"}>
+                          <Box fontSize={"xl"} key={"min_" + index}>
                             <Text
                               paddingRight={"5px"}
                               color={primaryColor}
@@ -86,7 +87,11 @@ export const GameRequirements = ({ game }: Props) => {
                         );
                       }
                       return (
-                        <Text fontSize={"lg"} paddingLeft={4}>
+                        <Text
+                          fontSize={"lg"}
+                          paddingLeft={4}
+                          key={"min_" + index}
+                        >
                           {text}
                         </Text>
                       );
@@ -102,11 +107,11 @@ export const GameRequirements = ({ game }: Props) => {
                         Recommended
                       </Text>
                     )}
-                    {recommendedReq?.split("\n").map((text) => {
+                    {recommendedReq?.split("\n").map((text, index) => {
                       if (text.includes(":")) {
                         const textArray = text.split(":", 2);
                         return (
-                          <Box fontSize={"xl"}>
+                          <Box fontSize={"xl"} key={"recomm" + index}>
                             <Text color={primaryColor} display={"inline"}>
                               {textArray[0]}:
                             </Text>
@@ -117,7 +122,11 @@ export const GameRequirements = ({ game }: Props) => {
                         );
                       }
                       return (
-                        <Text fontSize={"xl"} paddingLeft={4}>
+                        <Text
+                          key={"recomm" + index}
+                          fontSize={"xl"}
+                          paddingLeft={4}
+                        >
                           {text}
                         </Text>
                       );
