@@ -1,8 +1,8 @@
-import { HStack, Image } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import getDateStr from "../../../services/date";
 import useGameQueryStore from "../../../stores/GameQueryStore";
-import logo from "../../../assets/gameshop.webp";
+import { GiPirateCaptain } from "react-icons/gi";
 import { ColorModeSwitch } from "../../common/ColorModeSwitch";
 import { SearchInput } from "../../common/SearchInput/SearchInput";
 import styles from "./NavBar.module.css";
@@ -30,12 +30,7 @@ export const NavBar = () => {
       className={styles.navBar}
     >
       <Link to="/" onClick={handleClick}>
-        <Image
-          objectFit="cover"
-          src={logo}
-          boxSize="60px"
-          alt="gameshop logo"
-        ></Image>
+        <GiPirateCaptain size="70px"></GiPirateCaptain>
       </Link>
       <SearchInput></SearchInput>
       <ColorModeSwitch></ColorModeSwitch>

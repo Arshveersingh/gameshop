@@ -27,9 +27,14 @@ export const GameDetailPage = () => {
       <Box>
         <Heading
           textAlign={"center"}
-          size={"3xl"}
+          size={"2xl"}
           fontFamily="'Bebas Neue', 'Roboto', 'Sans-Serif';"
-          marginBottom={0}
+          marginBottom={4}
+          background={
+            "linear-gradient(0deg, rgba(255,215,0,1) 50%, rgba(255,165,0,1) 87%);"
+          }
+          backgroundClip={"text"}
+          color={"transparent"}
           letterSpacing={"8px"}
         >
           {game?.name}
