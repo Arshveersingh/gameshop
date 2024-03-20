@@ -29,7 +29,11 @@ export const GameRequirements = ({ game }: Props) => {
       <Tabs>
         <TabList>
           {platforms.map(({ platform }) => {
-            return <Tab fontSize={"2xl"}>{platform.name}</Tab>;
+            return (
+              <Tab key={platform.id} fontSize={"2xl"}>
+                {platform.name}
+              </Tab>
+            );
           })}
         </TabList>
         <TabPanels>
