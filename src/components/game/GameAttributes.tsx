@@ -18,10 +18,9 @@ export const GameAttributes = ({ game }: Props) => {
   return (
     <>
       <Heading
-        width={"lg"}
         display={"block"}
         margin={"auto"}
-        marginTop={"2rem"}
+        marginTop={"1.2rem"}
         textAlign={"center"}
       >
         Platforms
@@ -29,13 +28,11 @@ export const GameAttributes = ({ game }: Props) => {
       <Flex
         gap={"1rem"}
         margin={"1rem auto"}
-        marginBottom={"3rem"}
         placeContent={"center"}
         maxWidth={"80vw"}
       >
         <PlatformIconList
           boxSize={"2.6rem"}
-          gap="3rem"
           platforms={game.parent_platforms?.map((p) => p.platform)}
         ></PlatformIconList>
       </Flex>
@@ -43,6 +40,7 @@ export const GameAttributes = ({ game }: Props) => {
       <SimpleGrid
         borderTop={"1px solid rgb(75, 78, 83)"}
         templateColumns={"1fr 1fr"}
+        overflowX={"scroll"}
       >
         <GridItem
           borderBottom={"1px solid rgb(75, 78, 83)"}
@@ -71,7 +69,7 @@ export const GameAttributes = ({ game }: Props) => {
         >
           <Box fontSize={"1.2rem"} gap={"2rem"}>
             {game.genres.map((genre) => (
-              <Text key={genre.id} marginRight={"1.2rem"} display={"inline"}>
+              <Text key={genre.id} marginRight={"1.2rem"} display={"block"}>
                 {genre.name}
               </Text>
             ))}
