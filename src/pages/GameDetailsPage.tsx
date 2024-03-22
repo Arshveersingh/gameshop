@@ -1,14 +1,14 @@
-import { Box, Button, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Heading } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { LoadingAnimation } from "../components/common/LoadingAnimation";
 import { BackgroundImage } from "../components/game/BackGroundImage/BackgroundImage";
 import { GameAttributes } from "../components/game/GameAttributes";
 import GameCarousel from "../components/game/GameCarousel/GameCarousel";
 import { GameRating } from "../components/game/GameRating";
 import { GameRequirements } from "../components/game/GameRequirements";
 import { GameStores } from "../components/game/GameStore";
-import { LoadingAnimation } from "../components/common/LoadingAnimation";
 import useGame from "../hooks/useGame";
-import { useEffect } from "react";
 
 export const GameDetailPage = () => {
   const { slug } = useParams();

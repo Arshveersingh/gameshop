@@ -95,8 +95,9 @@ export const GameCarousel = ({ gameId }: Props) => {
           slidesPerView={1}
           modules={[Thumbs, FreeMode, Navigation, Keyboard]}
           thumbs={{
-            //@ts-ignoreF
+            //@ts-ignore
             swiper:
+              //@ts-ignore
               thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
         >
@@ -110,6 +111,9 @@ export const GameCarousel = ({ gameId }: Props) => {
             transform={"translateY(-50%);"}
             variant={"none"}
             zIndex={100}
+            _hover={{
+              transform: "translateY(-50%) scale(1.2);",
+            }}
           >
             <IoIosArrowDropleft size={"3rem"}></IoIosArrowDropleft>
           </Button>
@@ -123,6 +127,9 @@ export const GameCarousel = ({ gameId }: Props) => {
             transform={"translateY(-50%);"}
             variant={"none"}
             zIndex={100}
+            _hover={{
+              transform: "translateY(-50%) scale(1.2);",
+            }}
           >
             <IoIosArrowDropright size={"3rem"}></IoIosArrowDropright>
           </Button>
@@ -212,7 +219,7 @@ export const GameCarousel = ({ gameId }: Props) => {
                 ></Image>
                 <FaRegCirclePlay
                   size={40}
-                  className={styles.videoPlay}
+                  className={styles.videoPlayButton}
                 ></FaRegCirclePlay>
               </SwiperSlide>
             ))}
