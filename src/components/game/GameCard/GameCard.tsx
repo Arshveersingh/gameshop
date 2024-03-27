@@ -40,6 +40,7 @@ export const GameCard = ({ game }: Props) => {
       <Link to={`/games/${game.slug}`}>
         <Skeleton height={imageLoading ? "200px" : ""} isLoaded={!imageLoading}>
           <Image
+            alt={game.name}
             width={"100%"}
             className={styles.gameCardImage}
             src={getCroppedImages(game.background_image)}

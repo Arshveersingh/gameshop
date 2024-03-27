@@ -1,5 +1,4 @@
 import { Box, Button, Heading } from "@chakra-ui/react";
-import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { LoadingAnimation } from "../components/common/LoadingAnimation";
 import { BackgroundImage } from "../components/game/BackGroundImage/BackgroundImage";
@@ -13,10 +12,6 @@ import useGame from "../hooks/useGame";
 export const GameDetailPage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const { data: game, isLoading, error } = useGame(slug!);
   if (isLoading) return <LoadingAnimation></LoadingAnimation>;
   if (error || !game) throw error;

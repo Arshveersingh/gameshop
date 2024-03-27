@@ -24,7 +24,7 @@
 
 .thumbnailsContainer {
   max-width: 50vw;
-  padding: 0.8 rem 0.5rem;
+  padding: 0.8rem 0.5rem;
 }
 .videoThumbnail {
   position: relative;
@@ -46,6 +46,6 @@
   }
   .thumbnailsContainer {
     max-width: 700vw;
-    padding: 0.8 rem 0.5rem;
+    padding: 0.8rem 0.5rem;
   }
 }

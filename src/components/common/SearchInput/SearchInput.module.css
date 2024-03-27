@@ -1,14 +1,3 @@
-.hotKeys {
-  display: flex;
-  padding-right: 4rem;
-  justify-content: center;
-}
 form {
   width: 50vw;
 }
-@media screen and (max-width: 660px) {
-  .hotKeys {
-    display: none;
-  }
-}
-
