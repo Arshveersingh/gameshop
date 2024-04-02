@@ -7,11 +7,14 @@ export interface FetchResponse<T> {
   results: T[];
 }
 
+// const axiosInstance = axios.create({
+//   baseURL: "https://api.rawg.io/api",
+//   params: {
+//     key: "42b009760d0548029af2616359e7b8b6",
+//   },
+// });
 const axiosInstance = axios.create({
-  baseURL: "https://api.rawg.io/api",
-  params: {
-    key: "42b009760d0548029af2616359e7b8b6",
-  },
+  baseURL: "http://localhost:3001",
 });
 
 class APIClient<T> {
@@ -31,6 +34,9 @@ class APIClient<T> {
     return axiosInstance
       .get<T>(this.endpoint + "/" + id)
       .then((res) => res.data);
+  };
+  post = (data: FormData) => {
+    return axiosInstance.post(this.endpoint, data);
   };
 }
 
