@@ -16,6 +16,7 @@ export const GameGrid = () => {
     fetchNextPage,
     hasNextPage,
   } = useGames();
+
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const fetchedGamesCount =
     games?.pages.reduce((total, page) => total + page.results.length, 0) || 0;

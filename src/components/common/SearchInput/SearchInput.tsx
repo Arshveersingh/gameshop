@@ -33,49 +33,43 @@ export const SearchInput = () => {
   const searchButtonColor = useColorModeValue("#5cc2ed", "#333333");
 
   return (
-    <>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          gameQuery.setSearchText(ref.current?.value || "");
-          gameQuery.setDates("");
-          gameQuery.setSortOrder("");
-          ref.current!.value = "";
-          navigate("/");
-        }}
-      >
-        <InputGroup className={styles.searchBar}>
-          <Input
-            focusBorderColor="none"
-            borderRadius={20}
-            placeholder="Search games..."
-            variant="filled"
-            ref={ref}
-            _focus={{
-              background: backgroundColor,
-              transition: "background 200ms ease-in",
-            }}
-          ></Input>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        gameQuery.setSearchText(ref.current?.value || "");
+        gameQuery.setDates("");
+        gameQuery.setSortOrder("");
+        ref.current!.value = "";
+        navigate("/");
+      }}
+    >
+      <InputGroup className={styles.searchBar}>
+        <Input
+          focusBorderColor="none"
+          borderRadius={20}
+          placeholder="Search games..."
+          variant="filled"
+          ref={ref}
+          _focus={{
+            background: backgroundColor,
+            transition: "background 200ms ease-in",
+          }}
+        ></Input>
 
-          <InputRightAddon
-            padding={0}
-            margin={0}
-            borderRadius={"0 20px 20px 0"}
+        <InputRightAddon padding={0} margin={0} borderRadius={"0 20px 20px 0"}>
+          <Button
+            aria-label="Search Button"
+            paddingX={"2rem"}
+            _focus={{ outline: "none" }}
+            borderRadius={"inherit"}
+            backgroundColor={searchButtonColor}
+            type="submit"
+            className={styles.searchButton}
           >
-            <Button
-              aria-label="Search Button"
-              paddingX={"2rem"}
-              _focus={{ outline: "none" }}
-              borderRadius={"inherit"}
-              backgroundColor={searchButtonColor}
-              type="submit"
-              className={styles.searchButton}
-            >
-              <FaSearch></FaSearch>
-            </Button>
-          </InputRightAddon>
-        </InputGroup>
-      </form>
-    </>
+            <FaSearch></FaSearch>
+          </Button>
+        </InputRightAddon>
+      </InputGroup>
+    </form>
   );
 };

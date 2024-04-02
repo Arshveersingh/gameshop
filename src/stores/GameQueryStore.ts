@@ -26,8 +26,9 @@ const useGameQueryStore = create<GameQueryStore>((set) => ({
     set((store) => ({ gameQuery: { ...store.gameQuery, platformId } })),
   setSortOrder: (sortOrder) =>
     set((store) => ({ gameQuery: { ...store.gameQuery, sortOrder } })),
-  setDates: (dates) =>
-    set((store) => ({ gameQuery: { ...store.gameQuery, dates } })),
+  setDates: (dates) => {
+    set((store) => ({ gameQuery: { ...store.gameQuery, dates } }));
+  },
 }));
 
 if (process.env.NODE_ENV === "development") {

@@ -2,6 +2,7 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa6";
 import useGameQueryStore from "../../stores/GameQueryStore";
+import { useSearchParams } from "react-router-dom";
 
 // returns string YYYY-MM-DD,YYYY-MM-DD for querying server
 // second date should be older
@@ -20,9 +21,20 @@ const calcluateDates = (days: number): string => {
   );
 };
 export const DateSelector = () => {
-  const setDates = useGameQueryStore((s) => s.setDates);
+  const { setGenreId, setPlatformId, setSearchText, setSortOrder, setDates } =
+    useGameQueryStore();
+  const [searchParams] = useSearchParams();
   const dates = useGameQueryStore((s) => s.gameQuery.dates);
   const [menuText, setMenuText] = useState("Select Release Date");
+  if (searchParams.get("dates")) {
+    searchParams.set("dates", "");
+    setGenreId(0);
+    setPlatformId(0);
+    setSearchText("");
+    setSortOrder("");
+    setDates("");
+  }
+
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<FaChevronDown />}>
