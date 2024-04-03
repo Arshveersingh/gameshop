@@ -2,16 +2,16 @@ import {
   Box,
   Button,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Heading,
   Input,
-  FormErrorMessage,
 } from "@chakra-ui/react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import APIClient from "../services/api-client";
 import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
+import APIClient from "../services/api-client";
 
 const apiClient = new APIClient("signup");
 const schema = z.object({
@@ -39,7 +39,7 @@ export const SignupPage = () => {
       setIsSubmitting(false);
     } catch (error) {
       setIsSubmitting(false);
-      setError("email", { message: error });
+      setError("email", { message: "" });
     }
   };
 
@@ -66,7 +66,7 @@ export const SignupPage = () => {
         </Heading>
         <FormControl isInvalid={Boolean(errors.email?.message)} mb={"20px"}>
           <FormLabel>Email address</FormLabel>
-          <Input {...register("email")} type="text" focusBorderColor="none" />
+          <Input {...register("email")} type="email" focusBorderColor="none" />
           <FormErrorMessage>
             Invalid email format or email exist in database
           </FormErrorMessage>

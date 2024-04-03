@@ -35,7 +35,7 @@ class APIClient<T> {
       .get<T>(this.endpoint + "/" + id)
       .then((res) => res.data);
   };
-  post = (data: FormData) => {
+  post = (data: any) => {
     return axiosInstance.post(this.endpoint, data);
   };
 }
