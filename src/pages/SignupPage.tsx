@@ -11,6 +11,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import APIClient from "../services/api-client";
+import { useState } from "react";
 
 const apiClient = new APIClient("signup");
 const schema = z.object({
@@ -22,18 +23,23 @@ const schema = z.object({
 export type FormData = z.infer<typeof schema>;
 
 export const SignupPage = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
   const onSubmit: SubmitHandler<FormData> = async (data) => {
+    setIsSubmitting(true);
     try {
       await apiClient.post(data);
+      setIsSubmitting(false);
     } catch (error) {
-      console.log(error);
+      setIsSubmitting(false);
+      setError("email", { message: error });
     }
   };
 
@@ -61,7 +67,9 @@ export const SignupPage = () => {
         <FormControl isInvalid={Boolean(errors.email?.message)} mb={"20px"}>
           <FormLabel>Email address</FormLabel>
           <Input {...register("email")} type="text" focusBorderColor="none" />
-          <FormErrorMessage>Invalid email format</FormErrorMessage>
+          <FormErrorMessage>
+            Invalid email format or email exist in database
+          </FormErrorMessage>
         </FormControl>
         <FormControl isInvalid={Boolean(errors.username?.message)} mb={"20px"}>
           <FormLabel>Username</FormLabel>
@@ -83,7 +91,7 @@ export const SignupPage = () => {
             Password must contain 5 characters
           </FormErrorMessage>
         </FormControl>
-        <Button width={"100%"} type="submit">
+        <Button width={"100%"} type="submit" isLoading={isSubmitting}>
           Submit
         </Button>
       </form>
