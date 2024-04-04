@@ -1,7 +1,10 @@
+// returns str which can be passed to date argument in search params
+// to sort games by date. Returns date str representing last 3 months to next 3 months
+
 const getDateStr = () => {
-  let dateToday = new Date();
-  let lastThreeMonth = new Date();
-  let nextThreeMonth = new Date();
+  const dateToday = new Date();
+  const lastThreeMonth = new Date();
+  const nextThreeMonth = new Date();
   let searchDateStr = "";
   lastThreeMonth.setMonth(dateToday.getMonth() - 3);
   nextThreeMonth.setMonth(dateToday.getMonth() + 3);

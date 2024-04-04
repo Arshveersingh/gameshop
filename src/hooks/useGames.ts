@@ -2,7 +2,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import ms from "ms";
 import Game from "../entities/Game";
 import APIClient, { FetchResponse } from "../services/api-client";
-import getDateStr from "../services/date";
+
 import useGameQueryStore from "../stores/GameQueryStore";
 
 const apiClient = new APIClient<Game>(`/games`);
@@ -19,7 +19,7 @@ const useGames = () => {
           parent_platforms: gameQuery.platformId,
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
-          dates: gameQuery.dates ? gameQuery.dates : getDateStr(),
+          dates: gameQuery.dates,
           page: pageParam,
         },
       }),

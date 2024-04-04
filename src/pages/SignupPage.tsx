@@ -8,11 +8,12 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import APIClient from "../services/api-client";
-import { useNavigate } from "react-router-dom";
+import { getToken } from "../services/token";
 
 const apiClient = new APIClient("signup");
 const schema = z.object({
@@ -26,6 +27,13 @@ export type FormData = z.infer<typeof schema>;
 export const SignupPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  useEffect(() => {
+    const token = getToken();
+    if (token) {
+      navigate("/");
+    }
+  }, [navigate]);
+
   const {
     register,
     handleSubmit,
@@ -41,7 +49,6 @@ export const SignupPage = () => {
       if (response.status === 201) {
         apiClient.setAuthToken(response.data.token);
         navigate("/");
-        return;
       } else {
         setError("email", { message: "" });
       }

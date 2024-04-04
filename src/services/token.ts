@@ -23,4 +23,5 @@ export const getToken = () => {
       return localStorage.getItem("token");
     }
   }
+  return null;
 };

@@ -1,14 +1,22 @@
 import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import Lottie from "lottie-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import animationData from "../../animations/loadingAnimationInfiniteScroll.json";
 import useGames from "../../hooks/useGames";
 import { GameCard } from "./GameCard/GameCard";
 import { GameCardContainer } from "./GameCardContainer";
 import { GameCardSkeleton } from "./GameCardSkeleton";
+import { useSearchParams } from "react-router-dom";
+import useGameQueryStore from "../../stores/GameQueryStore";
+import getDateStr from "../../services/date";
 
 export const GameGrid = () => {
+  const { setDates } = useGameQueryStore();
+  useEffect(() => {
+    setDates(getDateStr());
+  }, []);
+
   const {
     data: games,
     error,
