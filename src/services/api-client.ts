@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { CanceledError } from "axios";
-
+import { isTokenExpired, setToken, getToken } from "./token";
 export interface FetchResponse<T> {
   count: number;
   next: string | null;
@@ -37,6 +37,23 @@ class APIClient<T> {
   };
   post = (data: any) => {
     return axiosInstance.post(this.endpoint, data);
+  };
+  setAuthToken = (token: string) => {
+    if (!isTokenExpired(token)) {
+      setToken(token);
+      axiosInstance.interceptors.request.use(
+        (config) => {
+          const token = getToken();
+          if (token) {
+            config.headers["Authorization"] = `Bearer ${token}`;
+          }
+          return config;
+        },
+        (error) => {
+          return Promise.reject(error);
+        }
+      );
+    }
   };
 }
 

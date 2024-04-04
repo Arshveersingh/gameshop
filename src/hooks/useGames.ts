@@ -9,10 +9,7 @@ const apiClient = new APIClient<Game>(`/games`);
 
 const useGames = () => {
   const gameQuery = useGameQueryStore((s) => s.gameQuery);
-  const setDates = useGameQueryStore((s) => s.setDates);
-  if (!gameQuery.dates) {
-    setDates(getDateStr());
-  }
+
   return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: ({ pageParam = 1 }) =>
@@ -22,7 +19,7 @@ const useGames = () => {
           parent_platforms: gameQuery.platformId,
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
-          dates: gameQuery.dates,
+          dates: gameQuery.dates ? gameQuery.dates : getDateStr(),
           page: pageParam,
         },
       }),
