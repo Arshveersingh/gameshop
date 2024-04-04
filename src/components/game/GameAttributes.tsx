@@ -40,7 +40,6 @@ export const GameAttributes = ({ game }: Props) => {
       <SimpleGrid
         borderTop={"1px solid rgb(75, 78, 83)"}
         templateColumns={"1fr 1fr"}
-        overflowX={"scroll"}
       >
         <GridItem
           borderBottom={"1px solid rgb(75, 78, 83)"}

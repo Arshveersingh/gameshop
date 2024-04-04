@@ -1,15 +1,14 @@
 import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import Lottie from "lottie-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import animationData from "../../animations/loadingAnimationInfiniteScroll.json";
 import useGames from "../../hooks/useGames";
+import getDateStr from "../../services/date";
+import useGameQueryStore from "../../stores/GameQueryStore";
 import { GameCard } from "./GameCard/GameCard";
 import { GameCardContainer } from "./GameCardContainer";
 import { GameCardSkeleton } from "./GameCardSkeleton";
-import { useSearchParams } from "react-router-dom";
-import useGameQueryStore from "../../stores/GameQueryStore";
-import getDateStr from "../../services/date";
 
 export const GameGrid = () => {
   const { setDates } = useGameQueryStore();
@@ -37,6 +36,7 @@ export const GameGrid = () => {
       next={() => {
         fetchNextPage();
       }}
+      style={{ overflow: "visible" }}
       loader={
         <Lottie
           loop
@@ -51,7 +51,11 @@ export const GameGrid = () => {
       }
     >
       <Box>
-        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
+        <SimpleGrid
+          overflow={"visible"}
+          columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+          spacing={6}
+        >
           {isLoading &&
             skeleton.map((num) => {
               return (
