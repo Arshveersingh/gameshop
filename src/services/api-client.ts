@@ -14,7 +14,7 @@ export interface FetchResponse<T> {
 //   },
 // });
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "http://localhost:3001",
 });
 
 class APIClient<T> {

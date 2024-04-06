@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Icon,
   IconButton,
   Menu,
   MenuButton,
@@ -10,13 +9,19 @@ import {
   Show,
 } from "@chakra-ui/react";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { useNavigate } from "react-router-dom";
 export const AuthenticationButtonGroup = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Show above="800px">
         <Box display={"flex"} gap={"20px"}>
-          <Button variant={"ghost"}>Login</Button>
-          <Button variant={"outline"}>Sign up</Button>
+          <Button onClick={() => navigate("/login")} variant={"ghost"}>
+            Log in
+          </Button>
+          <Button onClick={() => navigate("/signup")} variant={"outline"}>
+            Sign up
+          </Button>
         </Box>
       </Show>
       <Show below="800px">
@@ -28,11 +33,32 @@ export const AuthenticationButtonGroup = () => {
             variant="outline"
           />
           <MenuList>
-            <MenuItem>
-              <Button width={"100%"}>Login</Button>
+            <MenuItem
+              _hover={{
+                background: "none",
+              }}
+            >
+              <Button
+                onClick={() => navigate("/login")}
+                width={"100%"}
+                textAlign={"center"}
+                as={"span"}
+              >
+                Log in
+              </Button>
             </MenuItem>
-            <MenuItem>
-              <Button width={"100%"}>Sign up</Button>
+            <MenuItem
+              _hover={{
+                background: "none",
+              }}
+            >
+              <Button
+                as={"span"}
+                onClick={() => navigate("/signup")}
+                width={"100%"}
+              >
+                Sign up
+              </Button>
             </MenuItem>
           </MenuList>
         </Menu>

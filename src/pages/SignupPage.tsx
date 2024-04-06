@@ -50,22 +50,19 @@ export const SignupPage = () => {
         apiClient.setAuthToken(response.data.token);
         navigate("/");
       } else {
-        setError("email", { message: "" });
+        setError("email", { message: response.data.email.message });
       }
       setIsSubmitting(false);
     } catch (error) {
       setIsSubmitting(false);
-      setError("email", { message: "" });
+      setError("email", { message: error?.response.data.email?.message });
+      setError("username", { message: error?.response.data.username?.message });
+      setError("password", { message: error?.response.data.password?.message });
     }
   };
 
   return (
-    <Box
-      display={"grid"}
-      margin={"auto"}
-      maxWidth={"600px"}
-      placeContent={"center"}
-    >
+    <Box display={"grid"} margin={"auto"} maxWidth={"600px"}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Heading
           color={"transparet"}
@@ -84,7 +81,8 @@ export const SignupPage = () => {
           <FormLabel>Email address</FormLabel>
           <Input {...register("email")} type="email" focusBorderColor="none" />
           <FormErrorMessage>
-            Invalid email format or email exist in database
+            {errors?.email?.message ||
+              "Invalid email format or email exist in database."}
           </FormErrorMessage>
         </FormControl>
         <FormControl isInvalid={Boolean(errors.username?.message)} mb={"20px"}>
@@ -94,7 +92,9 @@ export const SignupPage = () => {
             type="text"
             focusBorderColor="none"
           />
-          <FormErrorMessage>Username must be 3 charaters</FormErrorMessage>
+          <FormErrorMessage>
+            {errors?.username?.message || "Username must be 3 charaters."}
+          </FormErrorMessage>
         </FormControl>
         <FormControl isInvalid={Boolean(errors.password?.message)} mb={"20px"}>
           <FormLabel>Password</FormLabel>
@@ -104,7 +104,7 @@ export const SignupPage = () => {
             focusBorderColor="none"
           />
           <FormErrorMessage>
-            Password must contain 5 characters
+            {errors?.password?.message || "Password must contain 5 characters."}
           </FormErrorMessage>
         </FormControl>
         <Button width={"100%"} type="submit" isLoading={isSubmitting}>
