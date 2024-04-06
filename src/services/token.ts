@@ -20,7 +20,7 @@ export const getToken = () => {
     if (isTokenExpired(token)) {
       localStorage.removeItem("token");
     } else {
-      return localStorage.getItem("token");
+      return token;
     }
   }
   return null;
