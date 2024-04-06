@@ -1,11 +1,11 @@
-import { HStack } from "@chakra-ui/react";
+import { Box, HStack } from "@chakra-ui/react";
+import { GiPirateCaptain } from "react-icons/gi";
 import { Link, useNavigate } from "react-router-dom";
 import getDateStr from "../../../services/date";
 import useGameQueryStore from "../../../stores/GameQueryStore";
-import { GiPirateCaptain } from "react-icons/gi";
 import { ColorModeSwitch } from "../../common/ColorModeSwitch";
-import { SearchInput } from "../../common/SearchInput/SearchInput";
-import styles from "./NavBar.module.css";
+import { SearchInput } from "../../common/SearchInput";
+import { AuthenticationButtonGroup } from "./AuthenticationButtonGroup";
 
 export const NavBar = () => {
   const navigate = useNavigate();
@@ -27,13 +27,15 @@ export const NavBar = () => {
       width={"100%"}
       display={"flex"}
       justifyContent={"space-between"}
-      className={styles.navBar}
     >
       <Link to="/" onClick={handleClick}>
         <GiPirateCaptain size="70px"></GiPirateCaptain>
       </Link>
       <SearchInput></SearchInput>
-      <ColorModeSwitch></ColorModeSwitch>
+      <Box display={"flex"} gap={"25px"}>
+        <ColorModeSwitch></ColorModeSwitch>
+        <AuthenticationButtonGroup></AuthenticationButtonGroup>
+      </Box>
     </HStack>
   );
 };
