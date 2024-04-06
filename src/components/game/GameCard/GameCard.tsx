@@ -1,4 +1,5 @@
 import {
+  Box,
   Card,
   CardBody,
   HStack,
@@ -9,11 +10,12 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import Game from "../../../entities/Game";
 import getCroppedImages from "../../../services/image-url";
-import { CriticScore } from "../CriticScore";
 import { Emoji } from "../../common/Emoji";
+import { CriticScore } from "../CriticScore";
 import { PlatformIconList } from "../PlatformIconList";
 import styles from "./GameCard.module.css";
 
@@ -28,8 +30,9 @@ const checkReleaseDate = (releaseDate: string) => {
 export const GameCard = ({ game }: Props) => {
   const [imageLoading, setImageLoading] = useState(true);
   const [isMouseOver, setIsMouseOver] = useState(false);
-
+  const [isLiked, setIsLiked] = useState(false);
   const backgroundColor = useColorModeValue("whitesmoke", "gray.700");
+  const navigate = useNavigate();
 
   return (
     <Card
@@ -37,17 +40,34 @@ export const GameCard = ({ game }: Props) => {
       onMouseEnter={() => setIsMouseOver(true)}
       onMouseLeave={() => setIsMouseOver(false)}
     >
-      <Link to={`/games/${game.slug}`}>
+      <Box cursor={"pointer"} onClick={() => navigate(`/games/${game.slug}`)}>
         <Skeleton height={imageLoading ? "200px" : ""} isLoaded={!imageLoading}>
           <Image
             alt={game.name}
             width={"100%"}
+            position={"relative"}
             className={styles.gameCardImage}
             src={getCroppedImages(game.background_image)}
             onLoad={() => setImageLoading(false)}
           ></Image>
+          {isMouseOver && (
+            <Box
+              onClick={(event) => {
+                event.stopPropagation();
+                setIsLiked(!isLiked);
+              }}
+              position={"absolute"}
+              bottom={"90px"}
+              right={"20px"}
+            >
+              {isLiked && <FaHeart color="deeppink" size={"35px"}></FaHeart>}
+              {!isLiked && (
+                <FaRegHeart color="deeppink" size={"35px"}></FaRegHeart>
+              )}
+            </Box>
+          )}
         </Skeleton>
-      </Link>
+      </Box>
       <CardBody paddingY={2} paddingX={3}>
         <HStack justifyContent={"space-between"} marginBottom={2}>
           <PlatformIconList
