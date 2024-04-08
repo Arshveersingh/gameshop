@@ -53,11 +53,19 @@ export const SignupPage = () => {
         setError("email", { message: response.data.email.message });
       }
       setIsSubmitting(false);
-    } catch (error) {
+    } catch (error: any) {
       setIsSubmitting(false);
-      setError("email", { message: error?.response.data.email?.message });
-      setError("username", { message: error?.response.data.username?.message });
-      setError("password", { message: error?.response.data.password?.message });
+      if (error.response?.data) {
+        setError("email", {
+          message: error.response.data.email?.message,
+        });
+        setError("username", {
+          message: error.response.data.username?.message as string,
+        });
+        setError("password", {
+          message: error.response.data.password?.message as string,
+        });
+      }
     }
   };
 

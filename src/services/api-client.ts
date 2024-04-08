@@ -7,14 +7,8 @@ export interface FetchResponse<T> {
   results: T[];
 }
 
-// const axiosInstance = axios.create({
-//   baseURL: "https://api.rawg.io/api",
-//   params: {
-//     key: "42b009760d0548029af2616359e7b8b6",
-//   },
-// });
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: "http://localhost:3000",
 });
 
 class APIClient<T> {
@@ -35,17 +29,21 @@ class APIClient<T> {
       .get<T>(this.endpoint + "/" + id)
       .then((res) => res.data);
   };
-  post = (data: any) => {
+  post = (data?: any) => {
     return axiosInstance.post(this.endpoint, data);
   };
+  put = (data?: any) => {
+    return axiosInstance.put(this.endpoint, data);
+  };
   setAuthToken = (token: string) => {
+    console.log("Auth token");
     if (!isTokenExpired(token)) {
       setToken(token);
       axiosInstance.interceptors.request.use(
         (config) => {
           const token = getToken();
           if (token) {
-            config.headers["Authorization"] = `Bearer ${token}`;
+            config.headers["authorization"] = `Bearer ${token}`;
           }
           return config;
         },

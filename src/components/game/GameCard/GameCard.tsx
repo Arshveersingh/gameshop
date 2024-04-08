@@ -18,11 +18,13 @@ import { Emoji } from "../../common/Emoji";
 import { CriticScore } from "../CriticScore";
 import { PlatformIconList } from "../PlatformIconList";
 import styles from "./GameCard.module.css";
+import { getToken } from "../../../services/token";
+import APIClient from "../../../services/api-client";
 
 interface Props {
   game: Game;
 }
-// Returns true if the game is released
+// Returns true if the game is released.
 const checkReleaseDate = (releaseDate: string) => {
   return releaseDate <= new Date().toISOString().split("T")[0]; // format YYYY-MM-DD
 };
@@ -33,6 +35,29 @@ export const GameCard = ({ game }: Props) => {
   const [isLiked, setIsLiked] = useState(false);
   const backgroundColor = useColorModeValue("whitesmoke", "gray.700");
   const navigate = useNavigate();
+
+  const handleLike = async (gameId: number) => {
+    const token = getToken();
+    if (token === null) {
+      navigate("/signup");
+    }
+    setIsLiked(!isLiked);
+    if (isLiked === false) {
+      const apiClient = new APIClient(`like_game/${gameId}`);
+      const response = await apiClient.put();
+      console.log(response);
+      if (response.status !== 200) {
+        setIsLiked(false);
+      }
+    } else {
+      const apiClient = new APIClient(`unlike_game/${gameId}`);
+      const response = await apiClient.put();
+      console.log(response);
+      if (response.status !== 200) {
+        setIsLiked(true);
+      }
+    }
+  };
 
   return (
     <Card
@@ -54,7 +79,7 @@ export const GameCard = ({ game }: Props) => {
             <Box
               onClick={(event) => {
                 event.stopPropagation();
-                setIsLiked(!isLiked);
+                handleLike(game.id);
               }}
               position={"absolute"}
               bottom={"90px"}

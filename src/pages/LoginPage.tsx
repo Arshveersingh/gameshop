@@ -64,7 +64,7 @@ export const LoginPage = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Heading
           color={"transparet"}
-          fontSize={"60px"}
+          fontSize={"50px"}
           background={
             "linear-gradient(0deg, rgba(63,94,251,1) 39%, rgba(131,58,180,1) 73%);"
           }
