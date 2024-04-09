@@ -15,6 +15,10 @@ class APIClient<T> {
   endpoint: string;
 
   constructor(endpoint: string) {
+    const token = getToken();
+    if (token && !axiosInstance.defaults.headers.common.Authorization) {
+      this.setAuthToken(token);
+    }
     this.endpoint = endpoint;
   }
 
@@ -29,22 +33,25 @@ class APIClient<T> {
       .get<T>(this.endpoint + "/" + id)
       .then((res) => res.data);
   };
+
+  getData = () => {
+    return axiosInstance.get<T>(this.endpoint).then((res) => res.data);
+  };
+
   post = (data?: any) => {
     return axiosInstance.post(this.endpoint, data);
   };
+
   put = (data?: any) => {
     return axiosInstance.put(this.endpoint, data);
   };
+
   setAuthToken = (token: string) => {
-    console.log("Auth token");
     if (!isTokenExpired(token)) {
       setToken(token);
       axiosInstance.interceptors.request.use(
         (config) => {
-          const token = getToken();
-          if (token) {
-            config.headers["authorization"] = `Bearer ${token}`;
-          }
+          config.headers["Authorization"] = `Bearer ${token}`;
           return config;
         },
         (error) => {

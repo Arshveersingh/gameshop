@@ -23,16 +23,17 @@ import APIClient from "../../../services/api-client";
 
 interface Props {
   game: Game;
+  isLiked?: boolean;
 }
 // Returns true if the game is released.
 const checkReleaseDate = (releaseDate: string) => {
   return releaseDate <= new Date().toISOString().split("T")[0]; // format YYYY-MM-DD
 };
 
-export const GameCard = ({ game }: Props) => {
+export const GameCard = ({ game, isLiked: liked = false }: Props) => {
   const [imageLoading, setImageLoading] = useState(true);
   const [isMouseOver, setIsMouseOver] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(liked);
   const backgroundColor = useColorModeValue("whitesmoke", "gray.700");
   const navigate = useNavigate();
 
@@ -45,14 +46,12 @@ export const GameCard = ({ game }: Props) => {
     if (isLiked === false) {
       const apiClient = new APIClient(`like_game/${gameId}`);
       const response = await apiClient.put();
-      console.log(response);
       if (response.status !== 200) {
         setIsLiked(false);
       }
     } else {
       const apiClient = new APIClient(`unlike_game/${gameId}`);
       const response = await apiClient.put();
-      console.log(response);
       if (response.status !== 200) {
         setIsLiked(true);
       }

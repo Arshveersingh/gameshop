@@ -1,6 +1,6 @@
 import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import Lottie from "lottie-react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import animationData from "../../animations/loadingAnimationInfiniteScroll.json";
 import useGames from "../../hooks/useGames";
@@ -9,12 +9,15 @@ import useGameQueryStore from "../../stores/GameQueryStore";
 import { GameCard } from "./GameCard/GameCard";
 import { GameCardContainer } from "./GameCardContainer";
 import { GameCardSkeleton } from "./GameCardSkeleton";
+import useLikedGames from "../../hooks/useLikedGames";
 
 export const GameGrid = () => {
   const { setDates } = useGameQueryStore();
+  // const likedGames = useLikedGames();
+  const [likedGames] = useState<number[] | undefined>(useLikedGames()?.data);
   useEffect(() => {
     setDates(getDateStr());
-  }, []);
+  }, [likedGames]);
 
   const {
     data: games,
@@ -68,7 +71,10 @@ export const GameGrid = () => {
             <React.Fragment key={index}>
               {page.results.map((game) => (
                 <GameCardContainer key={game.id}>
-                  <GameCard game={game}></GameCard>
+                  <GameCard
+                    isLiked={likedGames?.includes(game.id)}
+                    game={game}
+                  ></GameCard>
                 </GameCardContainer>
               ))}
             </React.Fragment>

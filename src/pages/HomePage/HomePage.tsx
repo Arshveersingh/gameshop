@@ -1,10 +1,10 @@
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { DateSelector } from "../../components/game/DateSelector";
 import { GameGrid } from "../../components/game/GameGrid";
 import { GameHeading } from "../../components/game/GameHeading";
 import { GenreList } from "../../components/game/GenreList";
 import { PlatformSelector } from "../../components/game/PlatformSelector";
 import { SortSelector } from "../../components/game/SortSelector";
-import { DateSelector } from "../../components/game/DateSelector";
 import styles from "./HomePage.module.css";
 
 export const HomePage = () => {
