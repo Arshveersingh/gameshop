@@ -8,7 +8,7 @@ export interface FetchResponse<T> {
 }
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://gameshop-backend.onrender.com/",
 });
 
 class APIClient<T> {
