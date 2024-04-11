@@ -1,4 +1,4 @@
-# Game Stop
+# Game Shop
 
 A portfolio project made with React. It uses RAWG API to fetch gaming data. This project uses React, Zustand, TypeScript, Vite and ReactQuery.
 
